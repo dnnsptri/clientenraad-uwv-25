@@ -5,6 +5,8 @@ export default {
     content: [
     './app/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
+    // lib holds data-driven class names (e.g. tileAspect in lib/articles.ts)
+    './lib/**/*.{ts,tsx}',
     './content/**/*.{ts,tsx,md,mdx}',
   ],
   theme: {

@@ -1,4 +1,5 @@
 import { getNavbarMenuItems } from "@/lib/articles";
+import { REPORT_YEAR } from "@/lib/site";
 
 const sitemap = [
   {
@@ -45,7 +46,7 @@ const Footer6 = () => {
                   alt="UWV cliëntenraad logo"
                   className="h-12 w-auto object-contain object-center"
                 />
-                <h3 className="text-xl font-bold">Jaarverslag 2024</h3>
+                <h3 className="text-xl font-bold">Jaarverslag {REPORT_YEAR}</h3>
               </div>
               <p className="whitespace-nowrap text-lg md:text-xl font-medium" style={{ color: 'var(--purple)' }}>
                 Werken aan kwalitatieve dienstverlening op maat

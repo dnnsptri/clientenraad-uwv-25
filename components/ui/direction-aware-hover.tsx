@@ -2,17 +2,27 @@
 
 import { useRef, useState } from "react";
 
+import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 export const DirectionAwareHover = ({
   imageUrl,
+  imageAlt = "",
+  // Responsive sizes hint for next/image; callers should pass the actual
+  // rendered widths so the optimizer serves appropriately sized files.
+  imageSizes = "100vw",
+  // Set for above-the-fold cards so the browser preloads them (LCP).
+  imagePriority = false,
   children,
   childrenClassName,
   imageClassName,
   className,
 }: {
   imageUrl: string;
+  imageAlt?: string;
+  imageSizes?: string;
+  imagePriority?: boolean;
   children: React.ReactNode | string;
   childrenClassName?: string;
   imageClassName?: string;
@@ -30,7 +40,6 @@ export const DirectionAwareHover = ({
     if (!ref.current) return;
 
     const direction = getDirection(event, ref.current);
-    console.log("direction", direction);
     switch (direction) {
       case 0:
         setDirection("top");
@@ -66,7 +75,9 @@ export const DirectionAwareHover = ({
       onMouseEnter={handleMouseEnter}
       ref={ref}
       className={cn(
-        "md:h-96 w-60 h-60 md:w-96 bg-transparent rounded-lg overflow-hidden group/card relative",
+        // Sizing is left to the caller (className); the card only handles
+        // clipping and the hover group.
+        "w-full bg-transparent rounded-lg overflow-hidden group/card relative",
         className
       )}
     >
@@ -86,14 +97,12 @@ export const DirectionAwareHover = ({
               ease: "easeOut",
             }}
           >
-            <img
-              alt="image"
-              className={cn(
-                "h-full w-full object-cover scale-[1.15]",
-                imageClassName
-              )}
-              width="1000"
-              height="1000"
+            <Image
+              alt={imageAlt}
+              fill
+              priority={imagePriority}
+              sizes={imageSizes}
+              className={cn("object-cover scale-[1.15]", imageClassName)}
               src={imageUrl}
             />
           </motion.div>

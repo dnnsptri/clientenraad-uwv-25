@@ -7,7 +7,9 @@ import { Button } from "./ui/button";
 
 const Hero175 = () => {
   return (
-    <section className="dark font-public_sans relative py-12 before:absolute before:top-0 before:left-0 before:z-10 before:block before:h-[15rem] before:w-full before:bg-linear-to-b before:from-muted before:to-transparent before:content-[''] md:py-32" style={{ backgroundColor: 'var(--purple)' }}>
+    // Extra bottom padding creates the purple canvas the article masonry
+    // overlaps into (see Gallery31's negative top margin).
+    <section className="dark font-public_sans relative pt-12 pb-40 before:absolute before:top-0 before:left-0 before:z-10 before:block before:h-[15rem] before:w-full before:bg-linear-to-b before:from-muted before:to-transparent before:content-[''] md:pt-32 md:pb-72" style={{ backgroundColor: 'var(--purple)' }}>
       <div className="relative z-20 container">
         <div className="relative z-20 mx-auto flex max-w-[56.25rem] flex-col items-center gap-6">
           {/* <div
@@ -15,7 +17,7 @@ const Hero175 = () => {
             style={{ backgroundColor: 'var(--light-blue)' }}
           >
             <p className="text-sm font-semibold text-white">
-              Jaarverslag 2024
+              Jaarverslag 2025
             </p>
           </div> */}
           <h1 className="w-full text-center text-3xl font-medium text-foreground sm:text-5xl md:text-7xl">
@@ -24,7 +26,9 @@ const Hero175 = () => {
           <p className="text-center text-[19px] text-white">
             Dankzij de ervaringen van cliënten en de dialoog met UWV werken de cliëntenraden aan meer bereikbaarheid, begrijpelijkheid en betrouwbaarheid. Alleen samen kunnen we stappen zetten naar een dienstverlening die recht doet aan iedere cliënt.
           </p>
-          <div className="mt-4 flex items-center gap-2">
+          {/* Scroll shortcut is only useful on mobile, where the articles
+              sit further down; on desktop the masonry is already in view. */}
+          <div className="mt-4 flex items-center gap-2 md:hidden">
             <Button
               asChild
               className="pdf-button"

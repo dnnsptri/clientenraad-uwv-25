@@ -3,7 +3,9 @@ import FadeInSection from '@/components/FadeInSection'
 import { ContentDivider } from '@/components/ContentDivider'
 import { TestimonialBlue } from '@/components/TestimonialBlue'
 import { TestimonialBluePhoto } from '@/components/TestimonialBluePhoto'
-import { getNavbarMenuItems } from '@/lib/articles'
+import { getArticleMetadata, getNavbarMenuItems } from '@/lib/articles'
+
+export const metadata = getArticleMetadata('kwaliteit-ans-lokhoff')
 
 export default function ArticleKwaliteitAnsPage() {
   return (

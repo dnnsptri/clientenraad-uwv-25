@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 import { getNavbarMenuItems } from "@/lib/articles";
+import { REPORT_YEAR } from "@/lib/site";
 
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -101,7 +102,7 @@ const Content4 = () => {
                 <div className="prose prose-h2:scroll-m-10 mt-6">
                 <p className="text-[19px] leading-8  mb-4">
                     Beste lezer,<br /> <br />
-                    Met trots en betrokkenheid presenteert het redactieoverleg van de UWV Cliëntenraden het jaarverslag over 2024. Hierin blikken we terug op een jaar waarin de cliëntenraden zich opnieuw sterk hebben gemaakt voor de stem van cliënten binnen het UWV.
+                    Met trots en betrokkenheid presenteert het redactieoverleg van de UWV Cliëntenraden het jaarverslag over {REPORT_YEAR}. Hierin blikken we terug op een jaar waarin de cliëntenraden zich opnieuw sterk hebben gemaakt voor de stem van cliënten binnen het UWV.
                   </p>
                   <p className="text-[19px] leading-8  mb-4">
                     De UWV-cliëntenraden bestaan uit vrijwilligers. Zij vertegenwoordigen alle cliënten van UWV, dus iedereen met een uitkering en/of voorziening van UWV. Het redactieoverleg bestaat uit afgevaardigden van de verschillende cliëntenraden. Naast het jaarverslag publiceren we artikelen over relevante onderwerpen op de website van UWV-cliëntenraden.
@@ -110,7 +111,7 @@ const Content4 = () => {
                     De cliëntenraden hebben als taak om signalen, ervaringen en knelpunten van cliënten zichtbaar te maken. Dit gebeurt onder meer door gesprekken met managers binnen UWV en door signalen te vertalen naar zowel gevraagde als ongevraagde adviezen. Op deze manier hopen we bij te dragen aan een betere dienstverlening, meer toegankelijkheid en een organisatie die oog houdt voor de menselijke maat.
                   </p>
                   <p className="text-[19px] leading-8  mb-4">
-                    Het jaar 2024 stond vooral in het teken van de kwaliteitscrisis bij UWV. Zowel op het gebied van de sociaal-medische beoordelingen van moeilijk objectiveerbare aandoeningen, als bij de berekeningen van de hoogte van, met name de WIA-uitkeringen bleek de kwaliteit ver onder de maat te zijn. De Centrale Cliëntenraad heeft voor beide kwaliteitsproblemen adviezen uitgebracht en regelmatig overleg gevoerd met de Raad van Bestuur en verantwoordelijke managers over de “hersteloperaties WIA”. Ook de overige ongevraagde adviezen van de Centrale Cliëntenraad hadden betrekking op het problematische terrein van SMZ (Sociaal Medische Zaken). Bij de districtsraden was er verschil in de manier waarop zij bij dit onderwerp betrokken waren.
+                    Het jaar {REPORT_YEAR} stond vooral in het teken van de kwaliteitscrisis bij UWV. Zowel op het gebied van de sociaal-medische beoordelingen van moeilijk objectiveerbare aandoeningen, als bij de berekeningen van de hoogte van, met name de WIA-uitkeringen bleek de kwaliteit ver onder de maat te zijn. De Centrale Cliëntenraad heeft voor beide kwaliteitsproblemen adviezen uitgebracht en regelmatig overleg gevoerd met de Raad van Bestuur en verantwoordelijke managers over de “hersteloperaties WIA”. Ook de overige ongevraagde adviezen van de Centrale Cliëntenraad hadden betrekking op het problematische terrein van SMZ (Sociaal Medische Zaken). Bij de districtsraden was er verschil in de manier waarop zij bij dit onderwerp betrokken waren.
                   </p>
                   <p className="text-[19px] leading-8  mb-4">
                     Naast deze kritieke punten besteden we in dit jaarverslag ook aandacht aan positieve ontwikkelingen bij UWV, zoals de morele beraden, re-integratie en het project “1 UWV”.
@@ -134,10 +135,10 @@ const Content4 = () => {
         {/*
         <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-8 rounded-2xl bg-muted/50 p-14 text-center md:flex-row md:text-left mt-24">
           <h3 className="text-3xl font-semibold">
-            Lees het jaarverslag 2024 in PDF
+            Lees het jaarverslag 2025 in PDF
           </h3>
           <Button asChild size="lg" className="pdf-button">
-            <a href="/downloads/UWV_clientenraad_jaarverslag2024.pdf" target="_blank" rel="noopener noreferrer">
+            <a href="/downloads/UWV_clientenraad_jaarverslag2025.pdf" target="_blank" rel="noopener noreferrer">
               Download PDF
             </a>
           </Button>

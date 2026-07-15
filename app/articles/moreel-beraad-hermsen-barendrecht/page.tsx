@@ -3,6 +3,10 @@ import FadeInSection from '@/components/FadeInSection'
 import { ContentDivider } from '@/components/ContentDivider'
 import { TestimonialBlue } from '@/components/TestimonialBlue'
 import { TestimonialBluePhoto } from '@/components/TestimonialBluePhoto'
+import { getArticleMetadata } from '@/lib/articles'
+
+export const metadata = getArticleMetadata('moreel-beraad-hermsen-barendrecht')
+
 export default function ArticleMoreelBeraadPage() {
   return (
     <main>

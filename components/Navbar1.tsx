@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Menu, FileText, X } from "lucide-react";
 import { getNavbarMenuItems } from "@/lib/articles";
+import { REPORT_PDF, REPORT_YEAR } from "@/lib/site";
 
 import {
   Accordion,
@@ -57,7 +58,7 @@ const Navbar1 = ({
     url: "/",
     src: "/images/logo_uwv.svg",
     alt: "UWV cliëntenraad logo",
-    title: "Jaarverslag 2024",
+    title: `Jaarverslag ${REPORT_YEAR}`,
   },
   menu = [
     { title: "Voorwoord", url: "/foreword" },
@@ -95,7 +96,7 @@ const Navbar1 = ({
     },
   ],
   auth = {
-    download: { title: "Bekijk PDF", url: "/downloads/UWV_clientenraad_jaarverslag2024.pdf" },
+    download: { title: "Bekijk PDF", url: REPORT_PDF },
   },
 }: Navbar1Props) => {
   // Controlled state so we can close the sheet on navigation
@@ -144,7 +145,7 @@ const Navbar1 = ({
                 alt={logo.alt}
               />
               <span className="text-xl font-semibold" style={{ color: 'var(--purple)' }}>
-                JV &rsquo;24
+                JV {REPORT_YEAR}
               </span>
             </a>
             <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>

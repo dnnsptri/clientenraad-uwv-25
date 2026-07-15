@@ -1,16 +1,26 @@
+import type { Metadata } from "next";
+import { SITE_TITLE } from "@/lib/site";
+
 export interface Article {
   slug: string;
   title: string;
   description: string;
+  // Pull quote shown on hover cards and used as extra context
   content?: string;
-  // Preferred canonical author field
   author?: string;
-  // Some items may use "name" from interviewee; keep for compatibility
-  name?: string;
   publishedAt?: string;
   readTime?: string;
   category?: string;
   image: string;
+  // Alt text for the header image (accessibility + machine readability)
+  imageAlt: string;
+  // Tailwind aspect-ratio class for the masonry tile on the homepage.
+  // All source images share the same 1920x1024 ratio, so the masonry
+  // effect comes from cropping each tile differently via object-cover.
+  tileAspect: string;
+  // Numeric height/width of tileAspect. Must match the class above; the
+  // masonry packing in Gallery31 uses it to balance column heights.
+  tileRatio: number;
 }
 
 export const articles: Article[] = [
@@ -20,7 +30,10 @@ export const articles: Article[] = [
     description: "Eric & Petra in gesprek met Maarten Oosterveld (SMZ)",
     content: "Door 1UWV wordt er niet meer gepingpongd met de cliënt",
     author: "Maarten Oosterveld (SMZ)",
-    image: "/images/header_maarten.jpg"
+    image: "/images/header_maarten.jpg",
+    imageAlt: "Portret van Maarten Oosterveld",
+    tileAspect: "aspect-[4/3]",
+    tileRatio: 3 / 4,
   },
   {
     slug: "kwaliteit-hans-sijtsma",
@@ -28,7 +41,10 @@ export const articles: Article[] = [
     description: "Hans Sijtsma (Noord) in gesprek met Dick",
     content: "We moeten bruggen bouwen, geen barricades opwerpen",
     author: "Hans Sijtsma (Noord)",
-    image: "/images/header_hans.jpg"
+    image: "/images/header_hans.jpg",
+    imageAlt: "Portret van Hans Sijtsma",
+    tileAspect: "aspect-square",
+    tileRatio: 1,
   },
   {
     slug: "kwaliteit-ans-lokhoff",
@@ -36,7 +52,10 @@ export const articles: Article[] = [
     description: "Ans Lokhoff (MOB) in gesprek met Gerard",
     content: "Cliënten verdienen meer dan een systeemmatige benadering",
     author: "Ans Lokhoff (MOB)",
-    image: "/images/header_ans.jpg"
+    image: "/images/header_ans.jpg",
+    imageAlt: "Portret van Ans Lokhoff",
+    tileAspect: "aspect-[3/5]",
+    tileRatio: 5 / 3,
   },
   {
     slug: "reintegratie-kees-van-blerck",
@@ -44,38 +63,70 @@ export const articles: Article[] = [
     description: "Eric en Petra in gesprek met Kees van Blerck",
     content: "Re-integratie begint bij écht luisteren en maatwerk",
     author: "Kees van Blerck (Re-integratie)",
-    image: "/images/header_kees.jpg"
+    image: "/images/header_kees.jpg",
+    imageAlt: "Portret van Kees van Blerck",
+    tileAspect: "aspect-square",
+    tileRatio: 1,
   },
   {
     slug: "moreel-beraad-hermsen-barendrecht",
     title: "Moreel beraad",
-    description: "Eric in gesprek met Theo Hermsen (SMZ) en Marloes Barendrecht (SMZ)",
+    description:
+      "Eric in gesprek met Theo Hermsen (SMZ) en Marloes Barendrecht (SMZ)",
     author: "Theo Hermsen en Marloes Barendrecht (SMZ)",
-    image: "/images/header_theo_marloes.jpg"
-  }
+    image: "/images/header_theo_marloes.jpg",
+    imageAlt: "Portret van Theo Hermsen en Marloes Barendrecht",
+    tileAspect: "aspect-[4/3]",
+    tileRatio: 3 / 4,
+  },
 ];
+
+export const getArticle = (slug: string) =>
+  articles.find((a) => a.slug === slug);
+
+// Builds the per-article <head> metadata (title, description, canonical,
+// Open Graph). Called from each article's page.tsx as:
+//   export const metadata = getArticleMetadata("<slug>")
+export const getArticleMetadata = (slug: string): Metadata => {
+  const article = getArticle(slug);
+  if (!article) return { title: "Artikel niet gevonden" };
+
+  return {
+    title: article.title,
+    description: article.description,
+    alternates: { canonical: `/articles/${article.slug}` },
+    openGraph: {
+      title: `${article.title} | ${SITE_TITLE}`,
+      description: article.description,
+      url: `/articles/${article.slug}`,
+      type: "article",
+      images: [{ url: article.image, alt: article.imageAlt }],
+    },
+  };
+};
 
 // Helper function to get hero content for articles
 export const getHeroContent = (slug: string) => {
-  const article = articles.find(a => a.slug === slug);
+  const article = getArticle(slug);
   if (!article) {
     return {
       title: "Artikel niet gevonden",
       description: "Het gevraagde artikel kon niet worden gevonden.",
-      image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
+      image:
+        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
     };
   }
-  
+
   return {
     title: article.title,
     description: article.description,
-    image: article.image
+    image: article.image,
   };
 };
 
 // Helper function to get navbar menu items
 export const getNavbarMenuItems = () => {
-  return articles.map(article => ({
+  return articles.map((article) => ({
     title: article.title,
     description: article.description,
     url: `/articles/${article.slug}`,

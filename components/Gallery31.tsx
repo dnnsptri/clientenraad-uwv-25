@@ -1,88 +1,126 @@
 import React from "react";
 import Link from "next/link";
+import type { Route } from "next";
 
 import { DirectionAwareHover } from "@/components/aceternity/direction-aware-hover";
-import { getNavbarMenuItems, articles } from "@/lib/articles";
+import { articles, type Article } from "@/lib/articles";
 
-const featureData = [
-  {
-    imgClass: "md:h-[320px] !w-full rounded-sm",
-    imgsrc: "/images/header_maarten.jpg",
-    ptitle: "1UWV",
-    name: "Maarten Oosterveld (SMZ)",
-    link: "/articles/1uwv-maarten-oosterveld",
-  },
-  {
-    imgClass: "md:h-[320px] !w-full rounded-sm lg:col-span-2",
-    imgsrc: "/images/header_hans.jpg",
-    ptitle: "Kwaliteit door Bruggen Bouwen",
-    name: "Hans Sijtsma (Noord)",
-    link: "/articles/kwaliteit-hans-sijtsma",
-  },
-  {
-    imgClass: "md:h-70 col-span-1 !h-full !w-full rounded-sm lg:row-span-2",
-    imgsrc: "/images/header_ans.jpg",
-    ptitle: "Menselijke maat in kwaliteit",
-    name: "Ans Lokhoff (MOB)",
-    link: "/articles/kwaliteit-ans-lokhoff",
-  },
-  {
-    imgClass: "md:h-[320px] !w-full rounded-sm lg:col-span-2",
-    imgsrc: "/images/header_theo_marloes.jpg",
-    ptitle: "Moreel beraad",
-    name: "Theo Hermsen & Marloes Barendrecht (SMZ)",
-    link: "/articles/moreel-beraad-hermsen-barendrecht",
-  },
-  {
-    imgClass: "md:h-[320px] !w-full rounded-sm",
-    imgsrc: "/images/header_kees.jpg",
-    ptitle: "Het nieuwe re-integratie-model",
-    name: "Kees van Blerck (Re-integratie)",
-    link: "/articles/reintegratie-kees-van-blerck",
-  },
-];
+// Masonry packing: each tile goes into the currently shortest column.
+// Tile heights are known up front (tileRatio in lib/articles.ts), so this
+// runs on the server and produces gap-free columns with a near-flush bottom
+// edge. CSS multicol was tried first but its column balancing left large
+// holes; this gives full control.
+const packColumns = (items: Article[], columnCount: number): Article[][] => {
+  const columns: Article[][] = Array.from({ length: columnCount }, () => []);
+  const heights = new Array<number>(columnCount).fill(0);
 
+  for (const item of items) {
+    const shortest = heights.indexOf(Math.min(...heights));
+    columns[shortest].push(item);
+    heights[shortest] += item.tileRatio;
+  }
+
+  return columns;
+};
+
+// Masonry tile: the aspect ratio sits on the Link (the flex item) and acts
+// as its natural height, while `grow` lets tiles in a shorter column stretch
+// until every column matches the tallest one — the grid bottom stays flush
+// regardless of ratios or gap counts. object-cover absorbs the few extra
+// pixels by cropping slightly more.
+// Rendered tile widths: full width on mobile, half the container on tablet,
+// a third on desktop (container caps at 1400px).
+const TILE_SIZES =
+  "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 460px";
+
+// Ring color is the cyan --blue so it stays visible on both the purple hero
+// overlap and the white page background.
+const TILE_FOCUS =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--blue)] focus-visible:ring-offset-2";
+
+const MasonryTile = ({ article }: { article: Article }) => (
+  <Link
+    href={`/articles/${article.slug}` as Route}
+    className={`block grow rounded-sm ${TILE_FOCUS} ${article.tileAspect}`}
+  >
+    <DirectionAwareHover
+      className="h-full rounded-sm"
+      imageUrl={article.image}
+      imageAlt={article.imageAlt}
+      imageSizes={TILE_SIZES}
+      imagePriority
+    >
+      <p className="text-xl font-bold">{article.title}</p>
+      <p className="text-sm font-normal">{article.author}</p>
+    </DirectionAwareHover>
+  </Link>
+);
+
+// Single-column mobile tile: no stretching needed, and touch devices have
+// no hover state, so the title is shown below the image instead.
+const CaptionedTile = ({ article }: { article: Article }) => (
+  <Link
+    href={`/articles/${article.slug}` as Route}
+    className={`block rounded-sm ${TILE_FOCUS}`}
+  >
+    <DirectionAwareHover
+      className={`rounded-sm ${article.tileAspect}`}
+      imageUrl={article.image}
+      imageAlt={article.imageAlt}
+      imageSizes={TILE_SIZES}
+    >
+      <p className="text-xl font-bold">{article.title}</p>
+      <p className="text-sm font-normal">{article.author}</p>
+    </DirectionAwareHover>
+    <div className="mt-2">
+      <p className="text-base font-bold">{article.title}</p>
+      <p className="text-sm">{article.author}</p>
+    </div>
+  </Link>
+);
+
+const MasonryColumns = ({ columns }: { columns: Article[][] }) => (
+  <>
+    {columns.map((column, index) => (
+      <div key={index} className="flex flex-1 flex-col gap-3">
+        {column.map((article) => (
+          <MasonryTile key={article.slug} article={article} />
+        ))}
+      </div>
+    ))}
+  </>
+);
+
+// Article overview, sourced from lib/articles.ts: adding an article there
+// automatically adds it here (and to the navbar, footer and sitemap).
+// The 3/2/1-column layouts are all server-rendered and toggled with
+// breakpoint classes; duplicate tiles reference the same image URLs, so
+// there is no extra download cost and no layout shift on hydration.
 const Gallery31 = () => {
+  const threeColumns = packColumns(articles, 3);
+  const twoColumns = packColumns(articles, 2);
+
+  // The negative top margin pulls the masonry up so its first row straddles
+  // the purple hero (which carries extra bottom padding to make room).
   return (
-    <section id="artikelen" className="relative h-auto overflow-hidden py-32">
+    <section
+      id="artikelen"
+      aria-label="Artikelen"
+      className="relative -mt-24 pb-32 md:-mt-48"
+    >
       <div className="container relative flex h-full w-full flex-col items-center justify-center">
-        <div className="relative z-10 flex flex-col items-center justify-center gap-5 mt-30">
-          <h1 className="text-center text-3xl sm:text-5xl md:text-6xl">
-            Artikelen
-          </h1>
-          <p className=" text-center">
-            Hieronder vindt u een overzicht van alle artikelen die in het jaarverslag 2024 zijn opgenomen.
-          </p>
-        </div>
-        <div className="relative mt-16 mb-50 grid w-full grid-cols-1 justify-center gap-[12px] md:grid-cols-2 lg:grid-cols-4">
-          {featureData.map((item, index) => {
-            const href = item.link;
-
-            if (href) {
-              return (
-                <Link key={index} href={href as any} className="contents">
-                  <DirectionAwareHover
-                    className={item.imgClass}
-                    imageUrl={item.imgsrc}
-                  >
-                    <p className="text-xl font-bold">{item.ptitle}</p>
-                    <p className="text-sm font-normal">{item.name}</p>
-                  </DirectionAwareHover>
-                </Link>
-              );
-            }
-
-            return (
-              <DirectionAwareHover
-                key={index}
-                className={item.imgClass}
-                imageUrl={item.imgsrc}
-              >
-                <p className="text-xl font-bold">{item.ptitle}</p>
-                <p className="text-sm font-normal">{item.name}</p>
-              </DirectionAwareHover>
-            );
-          })}
+        <div className="relative w-full">
+          <div className="hidden gap-3 lg:flex">
+            <MasonryColumns columns={threeColumns} />
+          </div>
+          <div className="hidden gap-3 sm:flex lg:hidden">
+            <MasonryColumns columns={twoColumns} />
+          </div>
+          <div className="flex flex-col gap-6 sm:hidden">
+            {articles.map((article) => (
+              <CaptionedTile key={article.slug} article={article} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

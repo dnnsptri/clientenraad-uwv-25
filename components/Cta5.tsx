@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { Button } from "./ui/button"
+import { REPORT_PDF, REPORT_YEAR } from "@/lib/site"
 
 const Cta5 = () => {
   return (
@@ -9,7 +10,7 @@ const Cta5 = () => {
           <div className="w-full shrink-0 self-stretch lg:w-1/2">
             <Image
               src="/images/visual_PDF.png"
-              alt="Jaarverslag 2024 PDF preview"
+              alt={`Jaarverslag ${REPORT_YEAR} PDF preview`}
               width={800}
               height={534}
               className="w-full h-full object-cover rounded-t-md md:rounded-t-none md:rounded-l-md"
@@ -18,13 +19,13 @@ const Cta5 = () => {
           </div>
           <div className="w-full shrink-0 px-4 py-6 md:p-8 lg:w-1/2 lg:px-16">
             <h3 className="mb-3 text-2xl font-semibold md:mb-4 md:text-4xl lg:mb-6">
-              Jaarverslag 2024 als PDF
+              Jaarverslag {REPORT_YEAR} als PDF
             </h3>
             <p className="mb-8 lg:text-[19px]">
               Wilt u het jaarverslag liever bekijken in PDF of zelfs printen? Dat kan. Download het complete rapport en lees het op uw eigen tempo, waar en wanneer u wilt.
             </p>
             <Button asChild className="pdf-button">
-              <a href="/downloads/UWV_clientenraad_jaarverslag2024.pdf" target="_blank" rel="noopener noreferrer">
+              <a href={REPORT_PDF} target="_blank" rel="noopener noreferrer">
                 Download PDF
               </a>
             </Button>

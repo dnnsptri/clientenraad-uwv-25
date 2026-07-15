@@ -3,7 +3,9 @@ import FadeInSection from '@/components/FadeInSection'
 import { ContentDivider } from '@/components/ContentDivider'
 import { TestimonialPurple } from '@/components/TestimonialPurple'
 import { TestimonialPurplePhoto } from '@/components/TestimonialPurplePhoto'
-import { getNavbarMenuItems } from '@/lib/articles'
+import { getArticleMetadata, getNavbarMenuItems } from '@/lib/articles'
+
+export const metadata = getArticleMetadata('reintegratie-kees-van-blerck')
 
 export default function ArticleReintegratieKeesPage() {
   return (

@@ -4,10 +4,26 @@ import { Navbar1 } from '@/components/Navbar1'
 import { Footer6 } from '@/components/Footer6'
 import ReadingProgress from '@/components/ReadingProgress'
 import BackToTop from '@/components/BackToTop'
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'UWV Cliëntenraad - Jaarverslag 2024',
-  description: 'Online jaarverslag',
+  // metadataBase makes all relative URLs (canonical, OG images) absolute
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_TITLE,
+    // Article and section pages set their own title; this appends the site name
+    template: `%s | ${SITE_TITLE}`,
+  },
+  description: SITE_DESCRIPTION,
+  alternates: { canonical: '/' },
+  openGraph: {
+    siteName: SITE_TITLE,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: '/',
+    type: 'website',
+    locale: 'nl_NL',
+  },
   icons: {
     icon: '/favicon.ico',
   },

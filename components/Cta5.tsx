@@ -4,7 +4,7 @@ import { REPORT_PDF, REPORT_YEAR } from "@/lib/site"
 
 const Cta5 = () => {
   return (
-    <section className="py-32">
+    <section className="py-16 md:py-32">
       <div className="container">
         <div className="flex w-full flex-col overflow-hidden rounded-lg md:rounded-xl lg:flex-row lg:items-center" style={{ backgroundColor: '#F8F4F8' }}>
           <div className="w-full shrink-0 self-stretch lg:w-1/2">

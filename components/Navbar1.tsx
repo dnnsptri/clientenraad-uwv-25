@@ -61,7 +61,7 @@ const Navbar1 = ({
     title: `Jaarverslag ${REPORT_YEAR}`,
   },
   menu = [
-    { title: "Voorwoord", url: "/foreword" },
+    { title: "Voorwoord", url: "/voorwoord" },
     {
       title: "Artikelen",
       url: "#",

@@ -14,6 +14,7 @@ export const DirectionAwareHover = ({
   imageSizes = "100vw",
   // Set for above-the-fold cards so the browser preloads them (LCP).
   imagePriority = false,
+  hideOverlay = false,
   children,
   childrenClassName,
   imageClassName,
@@ -23,7 +24,8 @@ export const DirectionAwareHover = ({
   imageAlt?: string;
   imageSizes?: string;
   imagePriority?: boolean;
-  children: React.ReactNode | string;
+  hideOverlay?: boolean;
+  children?: React.ReactNode | string;
   childrenClassName?: string;
   imageClassName?: string;
   className?: string;
@@ -114,6 +116,7 @@ export const DirectionAwareHover = ({
             }}
             className={cn(
               "text-white absolute bottom-4 left-4 z-40",
+              hideOverlay && "hidden",
               childrenClassName
             )}
           >

@@ -1,56 +1,106 @@
 "use client";
 
-import { useEffect, useState } from 'react';
-import { ChevronUp } from 'lucide-react';
+import { useEffect, useState } from "react";
+import { ChevronUp } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+const SCROLL_THRESHOLD_DESKTOP = 800;
+const SCROLL_THRESHOLD_MOBILE = 400;
+
+function getScrollThreshold() {
+  return window.innerWidth < 640
+    ? SCROLL_THRESHOLD_MOBILE
+    : SCROLL_THRESHOLD_DESKTOP;
+}
+
+function getScrollTop() {
+  return (
+    window.scrollY ||
+    document.documentElement.scrollTop ||
+    document.body.scrollTop ||
+    0
+  );
+}
+
+function easeOutCubic(progress: number) {
+  return 1 - Math.pow(1 - progress, 3);
+}
+
+function setScrollTop(value: number) {
+  window.scrollTo(0, value);
+  document.documentElement.scrollTop = value;
+  document.body.scrollTop = value;
+}
 
 const BackToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const toggleVisibility = () => {
-      const scrollTop = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      
-      // Show when scrolled more than 1000px
-      const shouldShow = scrollTop > 1000;
-      
-      // Hide when footer is in view (last 300px of page)
-      const footerThreshold = documentHeight - windowHeight - 300;
-      const shouldHide = scrollTop > footerThreshold;
-      
-      setIsVisible(shouldShow && !shouldHide);
+    const footer = document.getElementById("site-footer");
+    let footerInView = false;
+
+    const updateVisibility = () => {
+      setIsVisible(getScrollTop() > getScrollThreshold() && !footerInView);
     };
 
-    window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
+    const footerObserver = footer
+      ? new IntersectionObserver(
+          ([entry]) => {
+            footerInView = entry.isIntersecting;
+            updateVisibility();
+          },
+          { threshold: 0 },
+        )
+      : null;
+
+    footerObserver?.observe(footer!);
+
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+    document.body.addEventListener("scroll", updateVisibility, { passive: true });
+    window.addEventListener("resize", updateVisibility, { passive: true });
+    updateVisibility();
+
+    return () => {
+      footerObserver?.disconnect();
+      window.removeEventListener("scroll", updateVisibility);
+      document.body.removeEventListener("scroll", updateVisibility);
+      window.removeEventListener("resize", updateVisibility);
+    };
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    const start = getScrollTop();
+    if (start <= 0) return;
+
+    const duration = 600;
+    const startTime = performance.now();
+
+    const animate = (currentTime: number) => {
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      setScrollTop(start * (1 - easeOutCubic(progress)));
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    requestAnimationFrame(animate);
   };
 
   return (
     <button
+      type="button"
       onClick={scrollToTop}
-      className={`fixed bottom-8 right-8 z-50 p-3 shadow-lg transition-all duration-300 ease-in-out hover:bg-blue-600 ${
-        isVisible 
-          ? 'opacity-100 translate-y-0' 
-          : 'opacity-0 translate-y-4 pointer-events-none'
-      }`}
-      style={{ 
-        backgroundColor: 'var(--light-blue)',
-        color: 'var(--white)',
-        borderRadius: '2px'
-      }}
-      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--blue)'}
-      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--light-blue)'}
-      aria-label="Back to top"
+      className={cn(
+        "back-to-top pdf-button fixed bottom-0 right-0 z-50 !min-w-[48px]",
+        isVisible
+          ? "pointer-events-auto opacity-100"
+          : "pointer-events-none opacity-0",
+      )}
+      aria-label="Terug naar boven"
+      aria-hidden={!isVisible}
     >
-      <ChevronUp className="w-6 h-6" />
+      <ChevronUp className="size-6" />
     </button>
   );
 };

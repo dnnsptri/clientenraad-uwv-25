@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { Route } from "next";
 
 import { DirectionAwareHover } from "@/components/aceternity/direction-aware-hover";
-import { articles, type Article } from "@/lib/articles";
+import { articles, ARTICLES_PATH, type Article } from "@/lib/articles";
 
 // Masonry packing: each tile goes into the currently shortest column.
 // Tile heights are known up front (tileRatio in lib/articles.ts), so this
@@ -40,7 +40,7 @@ const TILE_FOCUS =
 
 const MasonryTile = ({ article }: { article: Article }) => (
   <Link
-    href={`/articles/${article.slug}` as Route}
+    href={`${ARTICLES_PATH}/${article.slug}` as Route}
     className={`block grow rounded-sm ${TILE_FOCUS} ${article.tileAspect}`}
   >
     <DirectionAwareHover
@@ -60,7 +60,7 @@ const MasonryTile = ({ article }: { article: Article }) => (
 // no hover state, so the title is shown below the image instead.
 const CaptionedTile = ({ article }: { article: Article }) => (
   <Link
-    href={`/articles/${article.slug}` as Route}
+    href={`${ARTICLES_PATH}/${article.slug}` as Route}
     className={`block rounded-sm ${TILE_FOCUS}`}
   >
     <DirectionAwareHover
@@ -68,10 +68,8 @@ const CaptionedTile = ({ article }: { article: Article }) => (
       imageUrl={article.image}
       imageAlt={article.imageAlt}
       imageSizes={TILE_SIZES}
-    >
-      <p className="text-xl font-bold">{article.title}</p>
-      <p className="text-sm font-normal">{article.author}</p>
-    </DirectionAwareHover>
+      hideOverlay
+    />
     <div className="mt-2">
       <p className="text-base font-bold">{article.title}</p>
       <p className="text-sm">{article.author}</p>
@@ -93,11 +91,9 @@ const MasonryColumns = ({ columns }: { columns: Article[][] }) => (
 
 // Article overview, sourced from lib/articles.ts: adding an article there
 // automatically adds it here (and to the navbar, footer and sitemap).
-// The 3/2/1-column layouts are all server-rendered and toggled with
-// breakpoint classes; duplicate tiles reference the same image URLs, so
-// there is no extra download cost and no layout shift on hydration.
+// With four articles, a 2-column masonry grid balances better than three
+// columns (which leaves one column with a single stretched tile).
 const Gallery31 = () => {
-  const threeColumns = packColumns(articles, 3);
   const twoColumns = packColumns(articles, 2);
 
   // The negative top margin pulls the masonry up so its first row straddles
@@ -106,14 +102,11 @@ const Gallery31 = () => {
     <section
       id="artikelen"
       aria-label="Artikelen"
-      className="relative -mt-24 pb-32 md:-mt-48"
+      className="relative -mt-16 pb-20 sm:-mt-24 sm:pb-32 md:-mt-48"
     >
       <div className="container relative flex h-full w-full flex-col items-center justify-center">
-        <div className="relative w-full">
-          <div className="hidden gap-3 lg:flex">
-            <MasonryColumns columns={threeColumns} />
-          </div>
-          <div className="hidden gap-3 sm:flex lg:hidden">
+        <div className="relative w-full max-w-4xl lg:max-w-5xl">
+          <div className="hidden gap-4 sm:flex">
             <MasonryColumns columns={twoColumns} />
           </div>
           <div className="flex flex-col gap-6 sm:hidden">

@@ -10,12 +10,8 @@ const sitemap = [
     title: "Overig",
     links: [
       {
-        title: "Home",
-        href: "/",
-      },
-      {
         title: "Voorwoord",
-        href: "/foreword",
+        href: "/voorwoord",
       },
       {
         title: "Bijlage 1: Overzicht werkgroepen",
@@ -35,7 +31,7 @@ const sitemap = [
 
 const Footer6 = () => {
   return (
-    <section className="py-16" style={{ backgroundColor: 'var(--white)' }}>
+    <section id="site-footer" className="py-12 sm:py-16" style={{ backgroundColor: 'var(--white)' }}>
       <div className="container">
         <footer>
           <div className="relative mb-8 flex w-full flex-col gap-x-28 gap-y-8 md:flex-row md:justify-between md:gap-y-0">
@@ -48,7 +44,7 @@ const Footer6 = () => {
                 />
                 <h3 className="text-xl font-bold">Jaarverslag {REPORT_YEAR}</h3>
               </div>
-              <p className="whitespace-nowrap text-lg md:text-xl font-medium" style={{ color: 'var(--purple)' }}>
+              <p className="text-balance text-lg md:text-xl font-medium" style={{ color: 'var(--purple)' }}>
                 Werken aan kwalitatieve dienstverlening op maat
               </p>
             </div>
@@ -69,7 +65,7 @@ const Footer6 = () => {
                           <li key={link.title}>
                             <a
                               href={url}
-                              className="hover:underline whitespace-nowrap text-base"
+                              className="hover:underline text-base sm:whitespace-nowrap"
                               style={{ color: 'var(--blue)' }}
                               target={newTab ? "_blank" : undefined}
                               rel={newTab ? "noopener noreferrer" : undefined}
@@ -87,7 +83,7 @@ const Footer6 = () => {
           </div>
           <div className="border-border flex flex-col items-baseline justify-between gap-8 border-t pt-8 md:flex-row md:gap-16">
             <div className=" text-xs sm:text-sm">
-              &copy; 2025 - UWV Cliëntenraad
+              &copy; 2026 - UWV Cliëntenraad
             </div>
             <div className=" flex flex-col items-start gap-4 text-xs sm:text-sm md:flex-row lg:items-center">
               <a href="https://www.clientenraad-uwv.nl/wat-is-de-clientenraad" target="_blank" rel="noopener noreferrer" className="hover:underline" style={{ color: 'var(--blue)' }}>

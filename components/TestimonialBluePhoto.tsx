@@ -11,40 +11,36 @@ interface TestimonialPhotoProps {
 
 const TestimonialPhoto = ({
   quote = "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-  image = { src: "/images/header_maarten.jpg", alt: "Foto" },
+  image = { src: "/images/header_etsseline.jpg", alt: "Foto" },
   variant,
 }: TestimonialPhotoProps) => {
   const bubbleClass = variant === "blue" ? "quote-bubble" : "quote-bubble-purple"
 
   return (
-    <div className="relative mt-4 -mb-4 lg:my-32">
-      <section className="py-0 overflow-visible">
-        <div className="container">
-          <div className="grid grid-cols-12 items-center gap-0 lg:gap-18">
-            {/* Quote left */}
-            <div className="col-span-12 lg:col-span-5 z-10 lg:-mr-20 relative order-2 lg:order-1">
-              <div className={`${bubbleClass} text-left`}>
-                <p className="font-regular lg:text-3xl leading-relaxed text-left">
-                  &ldquo;{quote}&rdquo;
-                </p>
-              </div>
-            </div>
-            {/* Photo right */}
-            <div className="col-span-12 lg:col-span-7 order-1 lg:order-2">
-              <div className="relative w-full overflow-hidden rounded-md">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={800}
-                  height={540}
-                  className="w-full h-auto object-cover"
-                  sizes="(max-width: 1024px) 100vw, 60vw"
-                />
-              </div>
-            </div>
+    <div className="prose-breakout not-prose relative my-8 lg:my-32">
+      <div className="grid grid-cols-12 items-center gap-0 lg:gap-8">
+        {/* Quote left */}
+        <div className="col-span-12 lg:col-span-5 z-10 lg:-mr-20 relative order-2 lg:order-1">
+          <div className={`${bubbleClass} text-left`}>
+            <p className="text-xl font-regular leading-relaxed text-left sm:text-2xl lg:text-3xl">
+              &ldquo;{quote}&rdquo;
+            </p>
           </div>
         </div>
-      </section>
+        {/* Photo right */}
+        <div className="col-span-12 lg:col-span-7 order-1 lg:order-2">
+          <div className="relative w-full overflow-hidden rounded-md">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              width={800}
+              height={540}
+              className="w-full h-auto object-cover"
+              sizes="(max-width: 1024px) 100vw, 64rem"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

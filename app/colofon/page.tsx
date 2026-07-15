@@ -16,8 +16,6 @@ import FadeInSection from "@/components/FadeInSection";
 export default function ColofonPage() {
   const [activeHeader, setActiveHeader] = useState<string | null>(null);
   const headerRefs = useRef<Record<string, HTMLElement>>({});
-  const [showBackToTop, setShowBackToTop] = useState(false);
-
   useEffect(() => {
     const headers = Object.keys(headerRefs.current);
 
@@ -51,21 +49,6 @@ export default function ColofonPage() {
     };
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 1000) {
-        setShowBackToTop(true);
-      } else {
-        setShowBackToTop(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   const addHeaderRef = (id: string, ref: HTMLElement | null) => {
     if (ref) {
       headerRefs.current[id] = ref;
@@ -91,42 +74,38 @@ export default function ColofonPage() {
           <div className="w-full max-w-5xl">
             <div className="w-full">
               <div>
-                <div className="prose prose-h2:scroll-m-10 mt-6">
-                <p className="text-[19px] leading-8  mb-4">
-                      Dit jaarverslag is samengesteld door de UWV Cliëntenraad en geeft een overzicht van onze activiteiten en bevindingen over het afgelopen jaar. We danken alle betrokkenen voor hun waardevolle bijdrage.
-                    </p>
-                    <h2 id="header-1" ref={(ref) => addHeaderRef("header-1", ref)} className="scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0">
-                      Redactie:
+                <div className="prose prose-longform prose-h2:scroll-m-10 mt-6">
+                    <h2 id="header-redactie" ref={(ref) => addHeaderRef("header-redactie", ref)} className="scroll-m-20">
+                      Redactie
                     </h2>
-                    <p className="text-[19px] leading-8  mb-4">
-                      - Gerard Haan (cliëntenraad Noord, voorzitter Redactieoverleg)<br />
-                      - Petra van Wieringen (cliëntenraad Overijssel en Gelderland-Noord, lid Redactieoverleg)<br />
-                      - Eric Beukema (cliëntenraad Overijssel en Gelderland-Noord, lid Redactieoverleg)<br />
-                      - Else te Brake (centrale cliëntenraad, lid Redactieoverleg)<br />
-                      - Dick Tolsma (cliëntenraad Midden- en Oost-Brabant, lid Redactieoverleg)<br />
-                      - André Houting (cliëntenraad Rijnmond, lid Redactieoverleg)
+                    <p>
+                      Gerard Haan (cliëntenraad Noord, voorzitter Redactieoverleg)<br />
+                      Petra van Wieringen (cliëntenraad Overijssel en Gelderland-Noord, lid Redactieoverleg)<br />
+                      Eric Beukema (cliëntenraad Overijssel en Gelderland-Noord, lid Redactieoverleg)<br />
+                      Else te Brake (centrale cliëntenraad, lid Redactieoverleg)<br />
+                      Dick Tolsma (cliëntenraad Midden- en Oost-Brabant, lid Redactieoverleg)
                     </p>
-                    <h2 id="header-1" ref={(ref) => addHeaderRef("header-1", ref)} className="scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0">
-                      Fotografie:
+                    <h2 id="header-fotografie" ref={(ref) => addHeaderRef("header-fotografie", ref)} className="scroll-m-20">
+                      Fotografie
                     </h2>
-                    <p className="text-[19px] leading-8  mb-4">
-                      - Patrick van den Hurk
+                    <p>
+                      Patrick van den Hurk
                     </p>
-                    <h2 id="header-1" ref={(ref) => addHeaderRef("header-1", ref)} className="scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0">
-                      Vormgeving & realisatie:
+                    <h2 id="header-vormgeving" ref={(ref) => addHeaderRef("header-vormgeving", ref)} className="scroll-m-20">
+                      Vormgeving
                     </h2>
-                    <p className="text-[19px] leading-8  mb-4">
-                      - Dennis Petri (Backspace)<br />
-                      - Menno van der Veen (Backspace)
+                    <p>
+                      Dennis Petri (Backspace)<br />
+                      Menno van der Veen (Backspace)
                     </p>
-                    <h2 id="header-1" ref={(ref) => addHeaderRef("header-1", ref)} className="scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0">
-                      Met dank aan:
+                    <h2 id="header-dank" ref={(ref) => addHeaderRef("header-dank", ref)} className="scroll-m-20">
+                      Met dank aan
                     </h2>
-                    <p className="text-[19px] leading-8  mb-4">
-                      - Saskia Bos (UWV, ambtelijk secretaris centrale cliëntenraad)<br />
-                      - Wonne Wolters (UWV, adviseur cliëntenparticipatie)<br />
-                      - Pia Dijkstra (EMMA Communicatie, procesbegeleiding)<br />
-                      - Joris Jenster (EMMA Communicatie, procesbegeleiding en eindredactie)
+                    <p>
+                      Saskia Bos (UWV, ambtelijk secretaris centrale cliëntenraad)<br />
+                      Wonne Wolters (UWV, adviseur cliëntenparticipatie)<br />
+                      Patrick van den Hurk (EMMA Communicatie, (eind)redactie)<br />
+                      Joris Jenster (EMMA Communicatie, procesbegeleiding)
                     </p>
                   </div>
                 </div>

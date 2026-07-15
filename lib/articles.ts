@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { SITE_TITLE } from "@/lib/site";
 
+export const ARTICLES_PATH = "/artikelen";
+
 export interface Article {
   slug: string;
   title: string;
@@ -25,59 +27,51 @@ export interface Article {
 
 export const articles: Article[] = [
   {
-    slug: "1uwv-maarten-oosterveld",
-    title: "1UWV",
-    description: "Eric & Petra in gesprek met Maarten Oosterveld (SMZ)",
-    content: "Door 1UWV wordt er niet meer gepingpongd met de cliënt",
-    author: "Maarten Oosterveld (SMZ)",
-    image: "/images/header_maarten.jpg",
-    imageAlt: "Portret van Maarten Oosterveld",
+    slug: "grenzen-invloed-etsseline-rijke",
+    title: "Grenzen van invloed",
+    description: "Etsseline Rijke (Noord) in gesprek met Gerard",
+    content:
+      "We kunnen als cliëntenraad signaleren en adviseren, maar niet alles veranderen",
+    author: "Etsseline Rijke (Noord)",
+    image: "/images/header_etsseline.jpg",
+    imageAlt: "Portret van Etsseline Rijke",
     tileAspect: "aspect-[4/3]",
     tileRatio: 3 / 4,
   },
   {
-    slug: "kwaliteit-hans-sijtsma",
-    title: "Kwaliteit door bruggen bouwen",
-    description: "Hans Sijtsma (Noord) in gesprek met Dick",
-    content: "We moeten bruggen bouwen, geen barricades opwerpen",
-    author: "Hans Sijtsma (Noord)",
-    image: "/images/header_hans.jpg",
-    imageAlt: "Portret van Hans Sijtsma",
-    tileAspect: "aspect-square",
-    tileRatio: 1,
-  },
-  {
-    slug: "kwaliteit-ans-lokhoff",
-    title: "Menselijke maat in kwaliteit",
-    description: "Ans Lokhoff (MOB) in gesprek met Gerard",
-    content: "Cliënten verdienen meer dan een systeemmatige benadering",
-    author: "Ans Lokhoff (MOB)",
-    image: "/images/header_ans.jpg",
-    imageAlt: "Portret van Ans Lokhoff",
-    tileAspect: "aspect-[3/5]",
-    tileRatio: 5 / 3,
-  },
-  {
-    slug: "reintegratie-kees-van-blerck",
-    title: "Het nieuwe re-integratie model",
-    description: "Eric en Petra in gesprek met Kees van Blerck",
-    content: "Re-integratie begint bij écht luisteren en maatwerk",
-    author: "Kees van Blerck (Re-integratie)",
-    image: "/images/header_kees.jpg",
-    imageAlt: "Portret van Kees van Blerck",
-    tileAspect: "aspect-square",
-    tileRatio: 1,
-  },
-  {
-    slug: "moreel-beraad-hermsen-barendrecht",
-    title: "Moreel beraad",
+    slug: "talentenfestival-jan-mark-mari",
+    title: "Talentenfestival",
     description:
-      "Eric in gesprek met Theo Hermsen (SMZ) en Marloes Barendrecht (SMZ)",
-    author: "Theo Hermsen en Marloes Barendrecht (SMZ)",
-    image: "/images/header_theo_marloes.jpg",
-    imageAlt: "Portret van Theo Hermsen en Marloes Barendrecht",
-    tileAspect: "aspect-[4/3]",
-    tileRatio: 3 / 4,
+      "Jan Mark van Stigt Thans & Mari van der Aalsvoort (MOB) in gesprek met Dick",
+    content: "Talentenfestival biedt ook nieuwe ideeën en inzichten",
+    author: "Jan Mark van Stigt Thans & Mari van der Aalsvoort (MOB)",
+    image: "/images/header_talentenfestival.jpg",
+    imageAlt: "Portret van Jan Mark van Stigt Thans en Mari van der Aalsvoort",
+    tileAspect: "aspect-square",
+    tileRatio: 1,
+  },
+  {
+    slug: "coalitieoverleg-nico-eeftink-pierre-hen",
+    title: "Coalitieoverleg",
+    description: "Nico Eeftink & Pierre Hen in gesprek met Eric",
+    content: "Meld je als raad actief aan voor coalitieoverleg",
+    author: "Nico Eeftink & Pierre Hen",
+    image: "/images/header_coalitieoverleg.jpg",
+    imageAlt: "Portret van Nico Eeftink en Pierre Hen",
+    tileAspect: "aspect-[4/5]",
+    tileRatio: 5 / 4,
+  },
+  {
+    slug: "kwaliteit-beoordelingen-ynske-jansen",
+    title: "Kwaliteit van beoordelingen",
+    description: "Ynske Jansen (Steungroep ME) in gesprek met Else",
+    content:
+      "Je beoordeling mag niet meer afhangen van welke arts je toevallig treft",
+    author: "Ynske Jansen (Steungroep ME)",
+    image: "/images/header_ynske.jpg",
+    imageAlt: "Portret van Ynske Jansen",
+    tileAspect: "aspect-square",
+    tileRatio: 1,
   },
 ];
 
@@ -94,11 +88,11 @@ export const getArticleMetadata = (slug: string): Metadata => {
   return {
     title: article.title,
     description: article.description,
-    alternates: { canonical: `/articles/${article.slug}` },
+    alternates: { canonical: `${ARTICLES_PATH}/${article.slug}` },
     openGraph: {
       title: `${article.title} | ${SITE_TITLE}`,
       description: article.description,
-      url: `/articles/${article.slug}`,
+      url: `${ARTICLES_PATH}/${article.slug}`,
       type: "article",
       images: [{ url: article.image, alt: article.imageAlt }],
     },
@@ -129,7 +123,7 @@ export const getNavbarMenuItems = () => {
   return articles.map((article) => ({
     title: article.title,
     description: article.description,
-    url: `/articles/${article.slug}`,
+    url: `${ARTICLES_PATH}/${article.slug}`,
     image: article.image,
   }));
 };

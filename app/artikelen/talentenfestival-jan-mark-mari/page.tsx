@@ -13,7 +13,7 @@ export default function ArticleTalentenfestivalPage() {
         <HeroBlue
           title="Talentenfestival biedt ook nieuwe ideeën en inzichten"
           description="Jan Mark van Stigt Thans & Mari van der Aalsvoort:"
-          image="/images/header_talentenfestival.jpg"
+          image="/images/header_janmark_mari.jpg"
         />
       </FadeInSection>
       <FadeInSection>
@@ -47,7 +47,7 @@ export default function ArticleTalentenfestivalPage() {
                       </p>
                       <TestimonialBluePhoto
                         quote="Door de omvang en de open sfeer stappen mensen makkelijker op een werkgever af dan wanneer ze alleen een sollicitatiebrief moeten sturen."
-                        image={{ src: "/images/content_Talentenfestival_1.jpg", alt: "Jan Mark van Stigt Thans en Mari van der Aalsvoort" }}
+                        image={{ src: "/images/content_mari.jpg", alt: "Mari van der Aalsvoort" }}
                       />
                       <p>
                         Volgens Mari verlaagt zo&apos;n veelzijdige omgeving de drempel om in gesprek te gaan met werkgevers aanzienlijk. &ldquo;Door de omvang en de open sfeer stappen mensen makkelijker op een werkgever af dan wanneer ze alleen een sollicitatiebrief moeten sturen. Je ziet spontaan geanimeerde gesprekken ontstaan tussen werkgevers en bezoekers. Mensen konden rondkijken, vergelijken en ontdekken. Voor iemand die nog zoekende is naar een volgende stap kan dat ontzettend waardevol zijn.&rdquo;

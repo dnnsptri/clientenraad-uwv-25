@@ -13,7 +13,7 @@ export default function ArticleCoalitieoverlegPage() {
         <HeroPurple
           title="Meld je als raad actief aan voor coalitieoverleg"
           description="Nico Eeftink & Pierre Hen:"
-          image="/images/header_coalitieoverleg.jpg"
+          image="/images/header_nico_pierre.jpg"
         />
       </FadeInSection>
       <FadeInSection>
@@ -47,7 +47,7 @@ export default function ArticleCoalitieoverlegPage() {
                       </p>
                       <TestimonialPurplePhoto
                         quote="Je bereikt meer met een uitgestoken hand dan met wantrouwen."
-                        image={{ src: "/images/content_Coalitieoverleg_1.jpg", alt: "Nico Eeftink en Pierre Hen" }}
+                        image={{ src: "/images/content_nico.jpg", alt: "Nico Eeftink" }}
                       />
                       <p>
                         Dat constructieve karakter is een rode draad in het verhaal van beide raadsleden. Zij zien de cliëntenraad niet als een tegenmacht, maar als een partner die vanuit de ervaringen van cliënten waarde toevoegt aan beleid en uitvoering. &ldquo;Dus moet je niet alleen kritisch zijn, maar ook laten zien wat je kunt bijdragen. Je bereikt meer met een uitgestoken hand dan met wantrouwen,&rdquo; zegt Nico. &ldquo;Kritisch zijn blijft belangrijk, maar uiteindelijk wil je toch vooral samen de dienstverlening verbeteren.&rdquo;

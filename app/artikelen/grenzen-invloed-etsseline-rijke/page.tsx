@@ -47,7 +47,7 @@ export default function ArticleEtsselineRijkePage() {
                       </p>
                       <TestimonialPurplePhoto
                         quote="We hoorden soms pas achteraf welke kant het opgaat. Terwijl wij juist dicht bij de praktijk staan."
-                        image={{ src: "/images/content_Etsseline_1.jpg", alt: "Etsseline Rijke" }}
+                        image={{ src: "/images/content_etsseline.jpg", alt: "Etsseline Rijke" }}
                       />
                       <p>
                         Die ervaring heeft ze de afgelopen jaren vaker opgedaan. Bij grote dossiers, die vaak veel impact hadden op cliënten, voelde de raad zich soms meer toeschouwer dan gesprekspartner. &ldquo;We hoorden soms pas achteraf welke kant het opgaat. Terwijl wij juist dicht bij de praktijk staan. Daarom horen wij wat besluiten daadwerkelijk voor mensen betekenen. En juist daarom zou het goed zijn als cliëntenraden eerder en intensiever worden betrokken.&rdquo;

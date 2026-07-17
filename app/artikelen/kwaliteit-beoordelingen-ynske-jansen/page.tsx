@@ -56,7 +56,7 @@ export default function ArticleYnskeJansenPage() {
                       </p>
                       <TestimonialBluePhoto
                         quote="Cliëntenraden brengen signalen van cliënten onder de aandacht. Zij zien dezelfde problemen terugkomen als wij."
-                        image={{ src: "/images/content_Ynske_1.jpg", alt: "Ynske Jansen" }}
+                        image={{ src: "/images/content_ynske.jpg", alt: "Ynske Jansen" }}
                       />
                       <p>
                         Patiëntenorganisaties sloegen vervolgens de handen ineen. &ldquo;Wij hebben samen met organisaties voor long covid, Q-koorts en Lyme een initiatiefgroep opgericht&rdquo;, zegt Ynske. &ldquo;Het doel was simpel: zorgen dat deze ziekten serieus worden genomen en dat patiënten worden betrokken bij oplossingen.&rdquo; Ook de Centrale Cliëntenraad van UWV schoof aan bij gesprekken die het ministerie van SZW over de uitvoering van de motie hield. Daarmee vervulden cliëntenraden een belangrijke rol als vertegenwoordiger van ervaringen uit de praktijk. &ldquo;Cliëntenraden brengen signalen van cliënten onder de aandacht&rdquo;, zegt Ynske. &ldquo;Zij zien dezelfde problemen terugkomen als wij: ongelijkheid, inconsistentie en gebrek aan kennis. We versterken elkaar wanneer we die zaken bij het UWV aan de orde stellen.&rdquo;

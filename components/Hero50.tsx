@@ -14,7 +14,7 @@ const Hero = ({ title, description, image, variant }: HeroProps) => {
   const svg = variant === "blue" ? "/images/element_top.svg" : "/images/element_top_purple.svg"
 
   return (
-    <section className="relative mb-[-3rem] sm:mb-0">
+    <section className="relative pb-8 sm:pb-0 sm:mb-0">
       {/* Hero photo — fill container, priority-loaded since it's above the fold */}
       <div className="relative h-[320px] sm:h-[420px] lg:h-[680px]">
         <Image
@@ -32,9 +32,9 @@ const Hero = ({ title, description, image, variant }: HeroProps) => {
         <div className="container">
           <div className="relative mx-auto max-w-5xl">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 0 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
+              transition={{ duration: 0.6 }}
             >
               <div className="absolute -top-20 left-0 z-20 sm:-top-32">
                 <img
@@ -45,7 +45,7 @@ const Hero = ({ title, description, image, variant }: HeroProps) => {
                 />
               </div>
               <div
-                className="rounded-sm px-5 pt-5 pb-7 sm:px-6 sm:pt-6 sm:pb-8 lg:p-20 text-left lg:min-h-[360px] flex flex-col justify-start"
+                className="relative z-20 rounded-sm px-5 pt-5 pb-7 sm:px-6 sm:pt-6 sm:pb-8 lg:p-20 text-left lg:min-h-[360px] flex flex-col justify-start"
                 style={{ backgroundColor: bgColor, boxShadow: "none", color: "var(--white)" }}
               >
                 <p className="pt-1 text-sm lg:text-xl">{description}</p>

@@ -22,7 +22,7 @@ const Testimonial = ({
       </div>
       <section className={`pt-8 lg:pt-16 ${cssClass}`}>
         <div className="flex flex-col items-start text-left">
-          <p className="mb-4 lg:mb-16 max-w-4xl px-4 lg:px-8 font-regular lg:text-3xl text-left">
+          <p className="mb-4 lg:mb-16 max-w-4xl px-4 lg:px-8 font-regular text-left">
             &ldquo;{quote}&rdquo;
           </p>
         </div>

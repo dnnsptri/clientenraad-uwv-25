@@ -10,16 +10,12 @@ const sitemap = [
     title: "Overig",
     links: [
       {
+        title: "Home",
+        href: "/",
+      },
+      {
         title: "Voorwoord",
         href: "/voorwoord",
-      },
-      {
-        title: "Bijlage 1: Overzicht werkgroepen",
-        href: "/downloads/Bijlage_1_UWV_clientenraad_werkgroepen.pdf",
-      },
-      {
-        title: "Bijlage 2: Ongevraagde adviezen",
-        href: "/downloads/Bijlage_2_UWV_clientenraad_adviezen.pdf",
       },
       {
         title: "Colofon",

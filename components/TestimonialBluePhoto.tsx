@@ -22,7 +22,7 @@ const TestimonialPhoto = ({
         {/* Quote left */}
         <div className="col-span-12 lg:col-span-5 z-10 lg:-mr-20 relative order-2 lg:order-1">
           <div className={`${bubbleClass} text-left`}>
-            <p className="text-xl font-regular leading-relaxed text-left sm:text-2xl lg:text-3xl">
+            <p className="font-regular leading-relaxed text-left">
               &ldquo;{quote}&rdquo;
             </p>
           </div>

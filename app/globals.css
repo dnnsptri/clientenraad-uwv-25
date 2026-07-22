@@ -293,6 +293,19 @@ body, p, .body-text {
   font-weight: 400;
 }
 
+.testimonial-blue p,
+.testimonial-purple p {
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+
+@media (min-width: 1024px) {
+  .testimonial-blue p,
+  .testimonial-purple p {
+    font-size: 2.625rem;
+  }
+}
+
 /* Quote bubble with tail (blue) */
 .quote-bubble {
   background-color: var(--blue);
@@ -304,6 +317,26 @@ body, p, .body-text {
   overflow: visible; /* prevent clipping on mobile */
   z-index: 0; /* keep below subsequent content */
   margin-bottom: 1.5rem;
+}
+
+.quote-bubble p,
+.quote-bubble-purple p {
+  font-size: 1.75rem;
+  line-height: 1.5;
+}
+
+@media (min-width: 640px) {
+  .quote-bubble p,
+  .quote-bubble-purple p {
+    font-size: 2.1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .quote-bubble p,
+  .quote-bubble-purple p {
+    font-size: 2.625rem;
+  }
 }
 
 .quote-bubble::before {

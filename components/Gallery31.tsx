@@ -45,12 +45,12 @@ const MasonryTile = ({ article }: { article: Article }) => (
   >
     <DirectionAwareHover
       className="h-full rounded-sm"
-      imageUrl={article.image}
-      imageAlt={article.imageAlt}
+      imageUrl={article.tileImage}
+      imageAlt={article.tileImageAlt}
       imageSizes={TILE_SIZES}
       imagePriority
     >
-      <p className="text-xl font-bold">{article.title}</p>
+      <p className="text-[2rem] font-bold leading-tight">{article.title}</p>
       <p className="text-sm font-normal">{article.author}</p>
     </DirectionAwareHover>
   </Link>
@@ -65,13 +65,13 @@ const CaptionedTile = ({ article }: { article: Article }) => (
   >
     <DirectionAwareHover
       className={`rounded-sm ${article.tileAspect}`}
-      imageUrl={article.image}
-      imageAlt={article.imageAlt}
+      imageUrl={article.tileImage}
+      imageAlt={article.tileImageAlt}
       imageSizes={TILE_SIZES}
       hideOverlay
     />
     <div className="mt-2">
-      <p className="text-base font-bold">{article.title}</p>
+      <p className="text-[1.6rem] font-bold leading-tight">{article.title}</p>
       <p className="text-sm">{article.author}</p>
     </div>
   </Link>

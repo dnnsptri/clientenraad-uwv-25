@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { Menu, FileText, X } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import { ChevronDown, Menu } from "lucide-react";
 import { getNavbarMenuItems } from "@/lib/articles";
 import { REPORT_PDF, REPORT_YEAR } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
 import {
   Accordion,
@@ -12,14 +13,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "./ui/button";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
 import {
   Sheet,
   SheetContent,
@@ -34,8 +27,27 @@ interface MenuItem {
   url: string;
   description?: string;
   icon?: React.ReactNode;
+  imageAlt?: string;
   items?: MenuItem[];
 }
+
+const buildDefaultMenu = (): MenuItem[] => [
+  { title: "Voorwoord", url: "/voorwoord" },
+  {
+    title: "Artikelen",
+    url: "#",
+    items: getNavbarMenuItems().map((item) => ({
+      ...item,
+      icon: (
+        <img
+          src={item.image}
+          alt={item.imageAlt ?? item.title}
+          className="size-12 shrink-0 rounded-sm object-cover"
+        />
+      ),
+    })),
+  },
+];
 
 interface Navbar1Props {
   logo?: {
@@ -60,41 +72,7 @@ const Navbar1 = ({
     alt: "UWV cliëntenraad logo",
     title: `Jaarverslag ${REPORT_YEAR}`,
   },
-  menu = [
-    { title: "Voorwoord", url: "/voorwoord" },
-    {
-      title: "Artikelen",
-      url: "#",
-      items: getNavbarMenuItems().map((item) => ({
-        ...item,
-        icon: (
-          <img
-            src={item.image}
-            alt={item.title}
-            className="size-12 shrink-0 rounded-sm object-cover"
-          />
-        ),
-      })),
-    },
-    {
-      title: "Bijlagen",
-      url: "#",
-      items: [
-        {
-          title: "Overzicht werkgroepen",
-          description: "Bijlage 1",
-          icon: <FileText className="size-8 shrink-0" />,
-          url: "/downloads/Bijlage_1_UWV_clientenraad_werkgroepen.pdf",
-        },
-        {
-          title: "Ongevraagde adviezen",
-          description: "Bijlage 2",
-          icon: <FileText className="size-8 shrink-0" />,
-          url: "/downloads/Bijlage_2_UWV_clientenraad_adviezen.pdf",
-        },
-      ],
-    },
-  ],
+  menu = buildDefaultMenu(),
   auth = {
     download: { title: "Bekijk PDF", url: REPORT_PDF },
   },
@@ -103,7 +81,7 @@ const Navbar1 = ({
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <section className="relative z-50 py-6" style={{ backgroundColor: 'var(--white)', fontFamily: 'Work Sans, sans-serif' }}>
+    <section className="relative z-50 overflow-visible py-6" style={{ backgroundColor: 'var(--white)', fontFamily: 'Work Sans, sans-serif' }}>
       <div className="container">
         {/* Desktop Menu */}
         <nav className="hidden justify-between lg:flex">
@@ -122,11 +100,9 @@ const Navbar1 = ({
           </div>
           <div className="flex items-center gap-6">
             <div className="flex items-center relative z-50">
-              <NavigationMenu>
-                <NavigationMenuList>
-                  {menu.map((item) => renderMenuItem(item))}
-                </NavigationMenuList>
-              </NavigationMenu>
+              <ul className="flex list-none items-center gap-1">
+                {menu.map((item) => renderDesktopMenuItem(item))}
+              </ul>
             </div>
             <Button asChild size="sm" className="pdf-button">
               <a href={auth.download.url} target="_blank" rel="noopener noreferrer">{auth.download.title}</a>
@@ -203,43 +179,111 @@ const Navbar1 = ({
   );
 };
 
-const renderMenuItem = (item: MenuItem) => {
-  if (item.items) {
-    return (
-      <NavigationMenuItem key={item.title}>
-        <NavigationMenuTrigger
-          className="group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium nav-item transition-colors"
-          style={{ backgroundColor: 'var(--white)' }}
-          onMouseEnter={(e) => { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = 'var(--white)'; el.style.color = 'var(--blue)'; }}
-          onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; el.style.backgroundColor = 'var(--white)'; el.style.color = ''; }}
+const DesktopArticlesDropdown = ({ item }: { item: MenuItem }) => {
+  const [open, setOpen] = useState(false);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const clearCloseTimer = () => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  };
+
+  const openMenu = () => {
+    clearCloseTimer();
+    setOpen(true);
+  };
+
+  const scheduleClose = () => {
+    clearCloseTimer();
+    closeTimerRef.current = setTimeout(() => setOpen(false), 150);
+  };
+
+  useEffect(() => {
+    const handlePointerDown = (event: PointerEvent) => {
+      if (!containerRef.current?.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleEscape);
+      clearCloseTimer();
+    };
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative"
+      onMouseEnter={openMenu}
+      onMouseLeave={scheduleClose}
+    >
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-haspopup="menu"
+        onClick={() => setOpen((current) => !current)}
+        className="nav-item inline-flex h-10 w-max items-center justify-center gap-1 rounded-md px-4 py-2 text-sm font-medium transition-colors hover:text-[var(--blue)]"
+        style={{ backgroundColor: "var(--white)" }}
+      >
+        {item.title}
+        <ChevronDown
+          className={cn(
+            "h-3 w-3 transition-transform duration-200",
+            open && "rotate-180"
+          )}
+          aria-hidden="true"
+        />
+      </button>
+      {open && (
+        <div
+          role="menu"
+          className="absolute right-0 top-full z-[9999] mt-1.5 w-[600px] rounded-md border bg-white p-6 shadow-lg"
+          onMouseEnter={openMenu}
+          onMouseLeave={scheduleClose}
         >
-          {item.title}
-        </NavigationMenuTrigger>
-        <NavigationMenuContent className="bg-popover text-popover-foreground z-[9999] relative" style={{ backgroundColor: 'var(--white)' }}>
-          <div className="grid w-[600px] gap-3 p-6 grid-cols-1">
-            {item.items.map((subItem) => (
-              <NavigationMenuLink asChild key={subItem.title} className="w-full">
-                <SubMenuLink item={subItem} />
-              </NavigationMenuLink>
+          <div className="grid grid-cols-1 gap-3">
+            {item.items?.map((subItem) => (
+              <SubMenuLink key={subItem.title} item={subItem} />
             ))}
           </div>
-        </NavigationMenuContent>
-      </NavigationMenuItem>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const renderDesktopMenuItem = (item: MenuItem) => {
+  if (item.items) {
+    return (
+      <li key={item.title}>
+        <DesktopArticlesDropdown item={item} />
+      </li>
     );
   }
 
   return (
-    <NavigationMenuItem key={item.title}>
-      <NavigationMenuLink
+    <li key={item.title}>
+      <a
         href={item.url}
-        className="bg-background group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors nav-item"
-        style={{ backgroundColor: 'var(--white)' }}
-        onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--white)'; e.currentTarget.style.color = 'var(--blue)'; }}
-        onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'var(--white)'; e.currentTarget.style.color = ''; }}
+        className="nav-item inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:text-[var(--blue)]"
+        style={{ backgroundColor: "var(--white)" }}
       >
         {item.title}
-      </NavigationMenuLink>
-    </NavigationMenuItem>
+      </a>
+    </li>
   );
 };
 

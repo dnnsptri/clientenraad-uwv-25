@@ -13,12 +13,17 @@ export interface Article {
   publishedAt?: string;
   readTime?: string;
   category?: string;
+  // Hero / Open Graph image (article detail pages)
   image: string;
-  // Alt text for the header image (accessibility + machine readability)
   imageAlt: string;
+  imageWidth: number;
+  imageHeight: number;
+  // Homepage masonry tile image (cropped for grid layout)
+  tileImage: string;
+  tileImageAlt: string;
+  tileImageWidth: number;
+  tileImageHeight: number;
   // Tailwind aspect-ratio class for the masonry tile on the homepage.
-  // All source images share the same 1920x1024 ratio, so the masonry
-  // effect comes from cropping each tile differently via object-cover.
   tileAspect: string;
   // Numeric height/width of tileAspect. Must match the class above; the
   // masonry packing in Gallery31 uses it to balance column heights.
@@ -35,8 +40,14 @@ export const articles: Article[] = [
     author: "Etsseline Rijke (Noord)",
     image: "/images/header_etsseline.jpg",
     imageAlt: "Portret van Etsseline Rijke",
-    tileAspect: "aspect-[4/3]",
-    tileRatio: 3 / 4,
+    imageWidth: 1920,
+    imageHeight: 1024,
+    tileImage: "/images/home_square_etsseline.jpg",
+    tileImageAlt: "Etsseline Rijke in gesprek",
+    tileImageWidth: 560,
+    tileImageHeight: 560,
+    tileAspect: "aspect-square",
+    tileRatio: 1,
   },
   {
     slug: "talentenfestival-jan-mark-mari",
@@ -47,6 +58,13 @@ export const articles: Article[] = [
     author: "Jan Mark van Stigt Thans & Mari van der Aalsvoort (MOB)",
     image: "/images/header_janmark_mari.jpg",
     imageAlt: "Portret van Jan Mark van Stigt Thans en Mari van der Aalsvoort",
+    imageWidth: 1920,
+    imageHeight: 1024,
+    tileImage: "/images/home_square_janmark_mari.jpg",
+    tileImageAlt:
+      "Jan Mark van Stigt Thans en Mari van der Aalsvoort aan tafel",
+    tileImageWidth: 560,
+    tileImageHeight: 560,
     tileAspect: "aspect-square",
     tileRatio: 1,
   },
@@ -58,8 +76,14 @@ export const articles: Article[] = [
     author: "Nico Eeftink & Pierre Hen",
     image: "/images/header_nico_pierre.jpg",
     imageAlt: "Portret van Nico Eeftink en Pierre Hen",
-    tileAspect: "aspect-[4/5]",
-    tileRatio: 5 / 4,
+    imageWidth: 1920,
+    imageHeight: 1024,
+    tileImage: "/images/home_high_nico_pierre.jpg",
+    tileImageAlt: "Nico Eeftink en Pierre Hen",
+    tileImageWidth: 500,
+    tileImageHeight: 600,
+    tileAspect: "aspect-[5/6]",
+    tileRatio: 6 / 5,
   },
   {
     slug: "kwaliteit-beoordelingen-ynske-jansen",
@@ -70,6 +94,12 @@ export const articles: Article[] = [
     author: "Ynske Jansen (Steungroep ME)",
     image: "/images/header_ynske.jpg",
     imageAlt: "Portret van Ynske Jansen",
+    imageWidth: 1920,
+    imageHeight: 1024,
+    tileImage: "/images/home_square_ynske.jpg",
+    tileImageAlt: "Ynske Jansen",
+    tileImageWidth: 560,
+    tileImageHeight: 560,
     tileAspect: "aspect-square",
     tileRatio: 1,
   },
@@ -94,7 +124,20 @@ export const getArticleMetadata = (slug: string): Metadata => {
       description: article.description,
       url: `${ARTICLES_PATH}/${article.slug}`,
       type: "article",
-      images: [{ url: article.image, alt: article.imageAlt }],
+      images: [
+        {
+          url: article.image,
+          alt: article.imageAlt,
+          width: article.imageWidth,
+          height: article.imageHeight,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${article.title} | ${SITE_TITLE}`,
+      description: article.description,
+      images: [article.image],
     },
   };
 };
@@ -124,6 +167,9 @@ export const getNavbarMenuItems = () => {
     title: article.title,
     description: article.description,
     url: `${ARTICLES_PATH}/${article.slug}`,
-    image: article.image,
+    image: article.tileImage,
+    imageAlt: article.tileImageAlt,
+    imageWidth: article.tileImageWidth,
+    imageHeight: article.tileImageHeight,
   }));
 };

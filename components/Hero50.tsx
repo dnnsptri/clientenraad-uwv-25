@@ -1,6 +1,5 @@
 "use client"
 import Image from "next/image"
-import { motion } from "framer-motion"
 
 interface HeroProps {
   title: string
@@ -16,7 +15,7 @@ const Hero = ({ title, description, image, variant }: HeroProps) => {
   return (
     <section className="relative pb-8 sm:pb-0 sm:mb-0">
       {/* Hero photo — fill container, priority-loaded since it's above the fold */}
-      <div className="relative h-[320px] sm:h-[420px] lg:h-[680px]">
+      <div className="relative h-[320px] min-h-[320px] sm:h-[420px] sm:min-h-[420px] lg:h-[680px] lg:min-h-[680px]">
         <Image
           src={image}
           alt=""
@@ -31,11 +30,7 @@ const Hero = ({ title, description, image, variant }: HeroProps) => {
       <div className="relative -mt-20 sm:-mt-48 lg:-mt-64 z-10">
         <div className="container">
           <div className="relative mx-auto max-w-5xl">
-            <motion.div
-              initial={{ opacity: 1, y: 0 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
+            <div className="hero-title-reveal">
               <div className="absolute -top-20 left-0 z-20 sm:-top-32">
                 <img
                   src={svg}
@@ -53,7 +48,7 @@ const Hero = ({ title, description, image, variant }: HeroProps) => {
                   {title}
                 </h1>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

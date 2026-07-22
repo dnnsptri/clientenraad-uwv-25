@@ -72,6 +72,65 @@ footer, .footer, [class*="footer"] {
   transition: opacity 600ms ease-out;
 }
 
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-title-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.fade-in-section.is-visible {
+  animation: fade-in-up 0.6s ease-out both;
+}
+
+@supports (animation-timeline: view()) {
+  .fade-in-section {
+    animation: fade-in-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 15%;
+  }
+
+  .fade-in-section.is-visible {
+    animation: fade-in-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 15%;
+  }
+}
+
+.hero-title-reveal {
+  animation: hero-title-reveal 0.6s ease-out 0.5s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-section,
+  .fade-in-section.is-visible,
+  .hero-title-reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (min-width: 640px) {
   .back-to-top {
     margin-bottom: max(2rem, env(safe-area-inset-bottom, 0px));

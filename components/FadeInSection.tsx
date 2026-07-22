@@ -4,14 +4,21 @@ import { ReactNode, useLayoutEffect, useRef } from "react";
 
 interface FadeInSectionProps {
   children: ReactNode;
+  /** Use time-based fade on load instead of scroll-driven view() — for above-fold heroes. */
+  onLoad?: boolean;
 }
 
-export default function FadeInSection({ children }: FadeInSectionProps) {
+export default function FadeInSection({ children, onLoad = false }: FadeInSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    if (onLoad) {
+      el.classList.add("is-visible");
+      return;
+    }
 
     const reveal = () => el.classList.add("is-visible");
 
@@ -38,10 +45,13 @@ export default function FadeInSection({ children }: FadeInSectionProps) {
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [onLoad]);
 
   return (
-    <div ref={ref} className="fade-in-section">
+    <div
+      ref={ref}
+      className={onLoad ? "fade-in-section fade-in-on-load is-visible" : "fade-in-section"}
+    >
       {children}
     </div>
   );

@@ -1,5 +1,4 @@
 import { HeroBlue } from '@/components/Hero50'
-import FadeInSection from '@/components/FadeInSection'
 import { ArticleBodySection } from '@/components/ArticleBodySection'
 import { ContentDivider } from '@/components/ContentDivider'
 import { TestimonialBluePhoto } from '@/components/TestimonialBluePhoto'
@@ -10,13 +9,11 @@ export const metadata = getArticleMetadata('kwaliteit-beoordelingen-ynske-jansen
 export default function ArticleYnskeJansenPage() {
   return (
     <main>
-      <FadeInSection>
-        <HeroBlue
+      <HeroBlue
           title="Je beoordeling mag niet meer afhangen van welke arts je toevallig treft"
           description="Ynske Jansen:"
           image="/images/header_ynske.jpg"
         />
-      </FadeInSection>
       <ArticleBodySection>
         <p className="intro">
           De Centrale Cliëntenraad (CC) van UWV verdiept zich al jaren in de problemen rond de uitvoering van het arbeidsongeschiktheidsstelsel door het UWV. Niet alleen de snelheid van de sociaal-medische beoordelingen voor de WIA laat zeer te wensen over, maar ook de kwaliteit ervan. Dat is vooral te zien bij de zogenaamde &lsquo;moeilijk objectiveerbare aandoeningen&rsquo;. Hierbij is een grotere &lsquo;interdoktervariatie&rsquo; te zien dan bij andere, meer gangbare aandoeningen. Dat wil zeggen dat de beoordelingen tussen artsen (te) sterk uiteen lopen.<br /><br />

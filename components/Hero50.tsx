@@ -15,7 +15,7 @@ const Hero = ({ title, description, image, variant }: HeroProps) => {
   return (
     <section className="relative pb-8 sm:pb-0 sm:mb-0">
       {/* Hero photo — fill container, priority-loaded since it's above the fold */}
-      <div className="relative h-[320px] min-h-[320px] sm:h-[420px] sm:min-h-[420px] lg:h-[680px] lg:min-h-[680px]">
+      <div className="relative h-[320px] min-h-[320px] sm:h-[420px] sm:min-h-[420px] lg:h-[680px] lg:min-h-[680px] hero-image-reveal">
         <Image
           src={image}
           alt=""

@@ -1,5 +1,4 @@
 import { HeroBlue } from '@/components/Hero50'
-import FadeInSection from '@/components/FadeInSection'
 import { ArticleBodySection } from '@/components/ArticleBodySection'
 import { ContentDivider } from '@/components/ContentDivider'
 import { TestimonialBluePhoto } from '@/components/TestimonialBluePhoto'
@@ -10,13 +9,11 @@ export const metadata = getArticleMetadata('talentenfestival-jan-mark-mari')
 export default function ArticleTalentenfestivalPage() {
   return (
     <main>
-      <FadeInSection>
-        <HeroBlue
+      <HeroBlue
           title="Talentenfestival biedt ook nieuwe ideeën en inzichten"
           description="Jan Mark van Stigt Thans & Mari van der Aalsvoort:"
           image="/images/header_janmark_mari.jpg"
         />
-      </FadeInSection>
       <ArticleBodySection>
         <p className="intro">
           Wat gebeurt er als je werkzoekenden, werkgevers, opleiders en loopbaanadviseurs niet afzonderlijk met elkaar in contact brengt, maar ze allemaal samenbrengt op één plek? Volgens <b>Jan Mark van Stigt Thans</b> en <b>Mari van der Aalsvoort</b>, beiden lid van de cliëntenraad Midden- en Oost-Brabant, laat het Talentenfestival in Eindhoven zien dat die aanpak werkt. Niet alleen omdat er vacatures worden ingevuld, maar vooral ook omdat mensen er opnieuw perspectief en onverwachte inzichten krijgen.<br /><br />

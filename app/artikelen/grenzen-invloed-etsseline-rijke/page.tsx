@@ -1,5 +1,4 @@
 import { HeroPurple } from '@/components/HeroPurple'
-import FadeInSection from '@/components/FadeInSection'
 import { ArticleBodySection } from '@/components/ArticleBodySection'
 import { ContentDivider } from '@/components/ContentDivider'
 import { TestimonialPurplePhoto } from '@/components/TestimonialPurplePhoto'
@@ -10,13 +9,11 @@ export const metadata = getArticleMetadata('grenzen-invloed-etsseline-rijke')
 export default function ArticleEtsselineRijkePage() {
   return (
     <main>
-      <FadeInSection>
-        <HeroPurple
+      <HeroPurple
           title="We kunnen als cliëntenraad signaleren en adviseren, maar niet alles veranderen"
           description="Etsseline Rijke:"
           image="/images/header_etsseline.jpg"
         />
-      </FadeInSection>
       <ArticleBodySection>
         <p className="intro">
           <b>Etsseline Rijke</b> neemt dit jaar afscheid van de cliëntenraad Noord, na de maximale zittingsduur van acht jaar. Het afscheid raakt haar merkbaar. Niet omdat de regels niet voor haar zouden moeten gelden, maar omdat ze het gevoel heeft dat haar ervaring juist nú van extra grote waarde kan zijn. &ldquo;Precies in deze tijd zijn er allerlei belangrijke ontwikkelingen rond de WIA, Wajong en WW,&rdquo; zegt ze. &ldquo;En dat zijn onderwerpen waar ik veel kennis van en ervaring mee heb. Dan is het jammer dat je moet stoppen als je denkt: ik kan hier nog echt iets in betekenen.&rdquo;<br /><br />

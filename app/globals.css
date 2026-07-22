@@ -103,14 +103,22 @@ footer, .footer, [class*="footer"] {
   animation: fade-in-up 0.6s ease-out both;
 }
 
+.fade-in-on-load {
+  animation: fade-in-up 0.6s ease-out both;
+}
+
+.hero-image-reveal {
+  animation: fade-in-up 0.6s ease-out both;
+}
+
 @supports (animation-timeline: view()) {
-  .fade-in-section {
+  .fade-in-section:not(.fade-in-on-load) {
     animation: fade-in-up linear both;
     animation-timeline: view();
     animation-range: entry 0% cover 15%;
   }
 
-  .fade-in-section.is-visible {
+  .fade-in-section.is-visible:not(.fade-in-on-load) {
     animation: fade-in-up linear both;
     animation-timeline: view();
     animation-range: entry 0% cover 15%;
@@ -124,6 +132,7 @@ footer, .footer, [class*="footer"] {
 @media (prefers-reduced-motion: reduce) {
   .fade-in-section,
   .fade-in-section.is-visible,
+  .hero-image-reveal,
   .hero-title-reveal {
     animation: none;
     opacity: 1;

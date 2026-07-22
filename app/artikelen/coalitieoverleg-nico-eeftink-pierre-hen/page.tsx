@@ -1,5 +1,4 @@
 import { HeroPurple } from '@/components/HeroPurple'
-import FadeInSection from '@/components/FadeInSection'
 import { ArticleBodySection } from '@/components/ArticleBodySection'
 import { ContentDivider } from '@/components/ContentDivider'
 import { TestimonialPurplePhoto } from '@/components/TestimonialPurplePhoto'
@@ -10,13 +9,11 @@ export const metadata = getArticleMetadata('coalitieoverleg-nico-eeftink-pierre-
 export default function ArticleCoalitieoverlegPage() {
   return (
     <main>
-      <FadeInSection>
-        <HeroPurple
+      <HeroPurple
           title="Meld je als raad actief aan voor coalitieoverleg"
           description="Nico Eeftink & Pierre Hen:"
           image="/images/header_nico_pierre.jpg"
         />
-      </FadeInSection>
       <ArticleBodySection>
         <p className="intro">
           Cliëntenraden kunnen binnen UWV veel meer invloed uitoefenen als zij niet pas achteraf over besluiten worden geïnformeerd, maar al in een vroeg stadium zelf meedenken. Daarom vinden <b>Nico Eeftink</b> en <b>Pierre Hen</b> het een belangrijke ontwikkeling dat cliëntenraden steeds vaker aanschuiven bij het coalitieoverleg. Daarin komen managers en leidinggevenden uit verschillende UWV-onderdelen samen om plannen, projecten en knelpunten te bespreken. Door ook cliëntenraden daarbij te betrekken, krijgt de stem van de cliënt een plek aan de voorkant van het proces.<br /><br />

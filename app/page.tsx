@@ -6,7 +6,7 @@ import FadeInSection from "@/components/FadeInSection";
 export default function Page() {
   return (
     <main className="p-0">
-      <FadeInSection>
+      <FadeInSection onLoad>
         <Hero175 />
       </FadeInSection>
       <FadeInSection>

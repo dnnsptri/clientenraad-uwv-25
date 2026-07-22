@@ -160,11 +160,6 @@ footer, .footer, [class*="footer"] {
   }
 }
 
-/* Ensure navigation dropdown appears on top */
-[data-radix-navigation-menu-content] {
-  z-index: 9999 !important;
-}
-
 /* Typography styles */
 h1 {
   font-family: 'Work Sans', sans-serif;

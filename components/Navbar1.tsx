@@ -183,6 +183,8 @@ const DesktopArticlesDropdown = ({ item }: { item: MenuItem }) => {
   const [open, setOpen] = useState(false);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  // Prevent click from immediately closing a menu that was just opened by hover.
+  const ignoreNextClickRef = useRef(false);
 
   const clearCloseTimer = () => {
     if (closeTimerRef.current) {
@@ -194,6 +196,7 @@ const DesktopArticlesDropdown = ({ item }: { item: MenuItem }) => {
   const openMenu = () => {
     clearCloseTimer();
     setOpen(true);
+    ignoreNextClickRef.current = true;
   };
 
   const scheduleClose = () => {
@@ -234,7 +237,14 @@ const DesktopArticlesDropdown = ({ item }: { item: MenuItem }) => {
         type="button"
         aria-expanded={open}
         aria-haspopup="menu"
-        onClick={() => setOpen((current) => !current)}
+        onClick={() => {
+          clearCloseTimer();
+          if (ignoreNextClickRef.current) {
+            ignoreNextClickRef.current = false;
+            return;
+          }
+          setOpen((current) => !current);
+        }}
         className="nav-item inline-flex h-10 w-max items-center justify-center gap-1 rounded-md px-4 py-2 text-sm font-medium transition-colors hover:text-[var(--blue)]"
         style={{ backgroundColor: "var(--white)" }}
       >

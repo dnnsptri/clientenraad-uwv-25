@@ -358,14 +358,14 @@ body, p, .body-text {
 
 .testimonial-blue p,
 .testimonial-purple p {
-  font-size: 1.4rem;
+  font-size: 1.19rem; /* 1.4rem × 0.85 */
   line-height: 1.5;
 }
 
 @media (min-width: 1024px) {
   .testimonial-blue p,
   .testimonial-purple p {
-    font-size: 2.625rem;
+    font-size: 2.23125rem; /* 2.625rem × 0.85 */
   }
 }
 
@@ -384,21 +384,21 @@ body, p, .body-text {
 
 .quote-bubble p,
 .quote-bubble-purple p {
-  font-size: 1.75rem;
+  font-size: 1.4875rem; /* 1.75rem × 0.85 */
   line-height: 1.5;
 }
 
 @media (min-width: 640px) {
   .quote-bubble p,
   .quote-bubble-purple p {
-    font-size: 2.1rem;
+    font-size: 1.785rem; /* 2.1rem × 0.85 */
   }
 }
 
 @media (min-width: 1024px) {
   .quote-bubble p,
   .quote-bubble-purple p {
-    font-size: 2.625rem;
+    font-size: 2.23125rem; /* 2.625rem × 0.85 */
   }
 }
 

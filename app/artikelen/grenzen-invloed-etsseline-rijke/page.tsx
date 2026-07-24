@@ -2,7 +2,7 @@ import { HeroPurple } from '@/components/HeroPurple'
 import { ArticleBodySection } from '@/components/ArticleBodySection'
 import { ContentDivider } from '@/components/ContentDivider'
 import { TestimonialPurplePhoto } from '@/components/TestimonialPurplePhoto'
-import { getArticleMetadata, getNavbarMenuItems } from '@/lib/articles'
+import { getArticleMetadata } from '@/lib/articles'
 
 export const metadata = getArticleMetadata('grenzen-invloed-etsseline-rijke')
 
@@ -70,9 +70,6 @@ export default function ArticleEtsselineRijkePage() {
         </h2>
         <p>
           En dat is waardevol omdat cliënten in het formele proces hun zegje niet altijd goed of tijdig kunnen doen. Dat is waar een cliëntenraad wel degelijk echt invloed kan hebben. Niet door zelf te beslissen, maar door zichtbaar te maken wat er in de praktijk gebeurt. Dat blijft nodig en belangrijk, al worden de beslissingen elders genomen, zegt Etsseline: &ldquo;We maken de stem van cliënten hoorbaar. En soms is dat precies waarmee verandering begint.&rdquo;
-        </p>
-        <p>
-          Lees ook het artikel over het <a href={getNavbarMenuItems()[1]?.url} className="underline">Talentenfestival</a>.
         </p>
         <ContentDivider src="/images/logo_uwv.svg" alt="Logo UWV cliëntenraad" />
       </ArticleBodySection>

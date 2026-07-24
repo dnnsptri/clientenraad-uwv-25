@@ -1,11 +1,8 @@
 import { ContentDivider } from "@/components/ContentDivider";
 import FadeInSection from "@/components/FadeInSection";
-import { getNavbarMenuItems } from "@/lib/articles";
 import { REPORT_YEAR } from "@/lib/site";
 
 const Content4 = () => {
-  const firstArticleUrl = getNavbarMenuItems()[0]?.url ?? "/artikelen";
-
   return (
     <FadeInSection>
       <section className="py-16 md:py-24">
@@ -101,14 +98,6 @@ const Content4 = () => {
                       dialoog en samenwerking. Alleen door samen te werken,
                       kunnen we blijven bouwen aan een dienstverlening die recht
                       doet aan iedere cliënt.
-                      <br /> <br />
-                      Benieuwd naar meer?
-                      <br />
-                      Lees dan nu het artikel van Etsseline over{" "}
-                      <a href={firstArticleUrl} className="underline">
-                        grenzen van invloed
-                      </a>
-                      .
                     </p>
                     <ContentDivider
                       src="/images/logo_uwv.svg"

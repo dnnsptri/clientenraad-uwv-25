@@ -34,7 +34,7 @@ export const articles: Article[] = [
   {
     slug: "grenzen-invloed-etsseline-rijke",
     title: "Grenzen van invloed",
-    description: "Etsseline Rijke (Noord) in gesprek met Gerard",
+    description: "Etsseline Rijke (Noord)",
     content:
       "We kunnen als cliëntenraad signaleren en adviseren, maar niet alles veranderen",
     author: "Etsseline Rijke (Noord)",
@@ -52,8 +52,7 @@ export const articles: Article[] = [
   {
     slug: "talentenfestival-jan-mark-mari",
     title: "Talentenfestival",
-    description:
-      "Jan Mark van Stigt Thans & Mari van der Aalsvoort (MOB) in gesprek met Dick",
+    description: "Jan Mark van Stigt Thans & Mari van der Aalsvoort (MOB)",
     content: "Talentenfestival biedt ook nieuwe ideeën en inzichten",
     author: "Jan Mark van Stigt Thans & Mari van der Aalsvoort (MOB)",
     image: "/images/header_janmark_mari.jpg",
@@ -71,7 +70,7 @@ export const articles: Article[] = [
   {
     slug: "coalitieoverleg-nico-eeftink-pierre-hen",
     title: "Coalitieoverleg",
-    description: "Nico Eeftink & Pierre Hen in gesprek met Eric",
+    description: "Nico Eeftink & Pierre Hen",
     content: "Meld je als raad actief aan voor coalitieoverleg",
     author: "Nico Eeftink & Pierre Hen",
     image: "/images/header_nico_pierre.jpg",
@@ -88,7 +87,7 @@ export const articles: Article[] = [
   {
     slug: "kwaliteit-beoordelingen-ynske-jansen",
     title: "Kwaliteit van beoordelingen",
-    description: "Ynske Jansen (Steungroep ME) in gesprek met Else",
+    description: "Ynske Jansen (Steungroep ME)",
     content:
       "Je beoordeling mag niet meer afhangen van welke arts je toevallig treft",
     author: "Ynske Jansen (Steungroep ME)",

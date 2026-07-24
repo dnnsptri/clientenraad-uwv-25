@@ -2,7 +2,7 @@ import { HeroPurple } from '@/components/HeroPurple'
 import { ArticleBodySection } from '@/components/ArticleBodySection'
 import { ContentDivider } from '@/components/ContentDivider'
 import { TestimonialPurplePhoto } from '@/components/TestimonialPurplePhoto'
-import { getArticleMetadata } from '@/lib/articles'
+import { getArticleMetadata, getNavbarMenuItems } from '@/lib/articles'
 
 export const metadata = getArticleMetadata('coalitieoverleg-nico-eeftink-pierre-hen')
 
@@ -61,6 +61,9 @@ export default function ArticleCoalitieoverlegPage() {
         </h2>
         <p>
           Voor cliëntenraden die nog niet deelnemen aan een coalitieoverleg, hebben Pierre en Nico daarom een duidelijke boodschap: wacht niet af of je wordt uitgenodigd om mee te doen, maar zoek actief contact. Nodig managers uit en laat zien wat de cliëntenraad al in een vroeg stadium kan bijdragen. Pierre: &ldquo;Stel niet alleen de vraag wat UWV voor de cliëntenraad kan doen, maar vooral ook wat de cliëntenraad voor UWV kan betekenen. Juist daar zit de meerwaarde van de samenwerking. Aan tafel met alle managers bereik je in één uur soms meer dan in maanden afzonderlijk overleg.&rdquo;
+        </p>
+        <p>
+          Lees ook het artikel van <a href={getNavbarMenuItems()[3]?.url} className="underline">Ynske Jansen over de kwaliteit van beoordelingen</a>.
         </p>
         <ContentDivider src="/images/logo_uwv.svg" alt="Logo UWV cliëntenraad" />
       </ArticleBodySection>

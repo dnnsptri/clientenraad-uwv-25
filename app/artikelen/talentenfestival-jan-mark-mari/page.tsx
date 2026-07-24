@@ -2,7 +2,7 @@ import { HeroBlue } from '@/components/Hero50'
 import { ArticleBodySection } from '@/components/ArticleBodySection'
 import { ContentDivider } from '@/components/ContentDivider'
 import { TestimonialBluePhoto } from '@/components/TestimonialBluePhoto'
-import { getArticleMetadata } from '@/lib/articles'
+import { getArticleMetadata, getNavbarMenuItems } from '@/lib/articles'
 
 export const metadata = getArticleMetadata('talentenfestival-jan-mark-mari')
 
@@ -64,6 +64,9 @@ export default function ArticleTalentenfestivalPage() {
         </p>
         <p>
           Beiden pleiten daarnaast voor een grotere rol van cliëntenraden bij de voorbereiding van dergelijke evenementen. Nu is de raad alleen uitgenodigd om op de dag zelf mee te kijken en hun bevindingen te delen. Volgens Mari en Jan Mark zou de ervaring van cliënten echter juist al in de ontwerpfase benut moeten worden. &ldquo;Wij weten van cliënten wat zij nodig hebben,&rdquo; zegt Mari. &ldquo;Denk aan toegankelijkheid, voldoende rustige plekken voor gesprekken en een goede balans tussen informatie en persoonlijke begeleiding. Die kennis kun je gebruiken om een mooi evenement als dit nóg beter te maken.&rdquo;
+        </p>
+        <p>
+          Lees ook het artikel over <a href={getNavbarMenuItems()[2]?.url} className="underline">coalitieoverleg</a>.
         </p>
         <ContentDivider src="/images/logo_uwv.svg" alt="Logo UWV cliëntenraad" />
       </ArticleBodySection>

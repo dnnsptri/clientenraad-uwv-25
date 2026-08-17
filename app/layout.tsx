@@ -46,9 +46,7 @@ export default function RootLayout({
           <Footer6 />
         </div>
         <BackToTop />
-        <div className="fixed bottom-0 left-0 w-full pointer-events-none -z-10" aria-hidden>
-          <img src="/images/bg_content.svg" alt="" className="w-full h-auto select-none" />
-        </div>
+        <div className="page-aurora" aria-hidden />
       </body>
     </html>
   )

@@ -9,6 +9,57 @@ html, body {
   overflow-x: hidden;
 }
 
+/* Soft aurora wash (Google Workspace spotlight-gradient) */
+.page-aurora {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -10;
+  overflow: hidden;
+}
+
+.page-aurora::before,
+.page-aurora::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  filter: blur(clamp(75px, 10vw, 150px));
+  background: linear-gradient(
+    90deg,
+    rgba(33, 123, 254, 0.3) 5.18%,
+    rgba(7, 142, 251, 0.3) 31.68%,
+    rgba(172, 135, 235, 0.3) 54.88%,
+    rgba(238, 77, 93, 0.3) 96.92%
+  );
+}
+
+.page-aurora::before {
+  z-index: 1;
+  border-radius: clamp(330px, 45vw, 661.323px);
+  width: clamp(330px, 45vw, 661.323px);
+  height: clamp(295px, 41vw, 589.722px);
+  bottom: clamp(-15px, -2vw, 50px);
+  left: clamp(-400px, -40vw, -550px);
+  transform: rotate(-61.215deg);
+}
+
+.page-aurora::after {
+  opacity: 0.89;
+  background: linear-gradient(
+    90deg,
+    rgba(33, 123, 254, 0.4) 5.18%,
+    rgba(7, 142, 251, 0.4) 31.68%,
+    rgba(172, 135, 235, 0.4) 54.88%,
+    rgba(238, 77, 93, 0.4) 96.92%
+  );
+  border-radius: clamp(270px, 37vw, 536.679px);
+  width: clamp(270px, 37vw, 536.679px);
+  height: clamp(220px, 31vw, 446.697px);
+  bottom: clamp(-15px, -2vw, -30px);
+  right: clamp(-275px, -38vw, -550px);
+  transform: rotate(15.25deg);
+}
+
 /* Page container styling */
 body {
   max-width: 2560px;

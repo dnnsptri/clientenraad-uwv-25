@@ -701,9 +701,14 @@ main:has(.hero-purple) {
     line-height: 1.2;
   }
 
-  /* Narrow column: drop the cap to two lines so it doesn't dominate */
+  /* Narrow column: drop the cap to two lines so it doesn't dominate.
+     The float box (font-size x line-height) must stay just under two line
+     boxes (2 x 1.7em = 3.4em), otherwise sub-pixel rounding pushes a third
+     line into the indent and the cap ends up floating next to three lines
+     while only covering two. 4.6 x 0.72 = 3.31em leaves that margin. */
   .prose-longform .intro + p::first-letter {
-    font-size: 4.72em;
+    font-size: 4.6em;
+    line-height: 0.72;
   }
 
   .prose-longform .prose-breakout {

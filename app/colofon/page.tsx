@@ -78,35 +78,70 @@ export default function ColofonPage() {
                     <h2 id="header-redactie" ref={(ref) => addHeaderRef("header-redactie", ref)} className="scroll-m-20">
                       Redactie
                     </h2>
-                    <p>
-                      Gerard Haan (cliëntenraad Noord, voorzitter Redactieoverleg)<br />
-                      Petra van Wieringen (cliëntenraad Overijssel en Gelderland-Noord, lid Redactieoverleg)<br />
-                      Eric Beukema (cliëntenraad Overijssel en Gelderland-Noord, lid Redactieoverleg)<br />
-                      Else te Brake (centrale cliëntenraad, lid Redactieoverleg)<br />
-                      Dick Tolsma (cliëntenraad Midden- en Oost-Brabant, lid Redactieoverleg)
-                    </p>
+                    <ul className="credits">
+                      <li>
+                        <span className="credit-name">Gerard Haan</span>
+                        <span className="credit-role">Cliëntenraad Noord, voorzitter Redactieoverleg</span>
+                      </li>
+                      <li>
+                        <span className="credit-name">Petra van Wieringen</span>
+                        <span className="credit-role">Cliëntenraad Overijssel en Gelderland-Noord, lid Redactieoverleg</span>
+                      </li>
+                      <li>
+                        <span className="credit-name">Eric Beukema</span>
+                        <span className="credit-role">Cliëntenraad Overijssel en Gelderland-Noord, lid Redactieoverleg</span>
+                      </li>
+                      <li>
+                        <span className="credit-name">Else te Brake</span>
+                        <span className="credit-role">Centrale cliëntenraad, lid Redactieoverleg</span>
+                      </li>
+                      <li>
+                        <span className="credit-name">Dick Tolsma</span>
+                        <span className="credit-role">Cliëntenraad Midden- en Oost-Brabant, lid Redactieoverleg</span>
+                      </li>
+                    </ul>
                     <h2 id="header-fotografie" ref={(ref) => addHeaderRef("header-fotografie", ref)} className="scroll-m-20">
                       Fotografie
                     </h2>
-                    <p>
-                      Patrick van den Hurk
-                    </p>
+                    <ul className="credits">
+                      <li>
+                        <span className="credit-name">Patrick van den Hurk</span>
+                      </li>
+                    </ul>
                     <h2 id="header-vormgeving" ref={(ref) => addHeaderRef("header-vormgeving", ref)} className="scroll-m-20">
                       Vormgeving
                     </h2>
-                    <p>
-                      Dennis Petri (Backspace)<br />
-                      Menno van der Veen (Backspace)
-                    </p>
+                    <ul className="credits">
+                      <li>
+                        <span className="credit-name">Dennis Petri</span>
+                        <span className="credit-role">Backspace</span>
+                      </li>
+                      <li>
+                        <span className="credit-name">Menno van der Veen</span>
+                        <span className="credit-role">Backspace</span>
+                      </li>
+                    </ul>
                     <h2 id="header-dank" ref={(ref) => addHeaderRef("header-dank", ref)} className="scroll-m-20">
                       Met dank aan
                     </h2>
-                    <p>
-                      Saskia Bos (UWV, ambtelijk secretaris centrale cliëntenraad)<br />
-                      Wonne Wolters (UWV, adviseur cliëntenparticipatie)<br />
-                      Patrick van den Hurk (EMMA Communicatie, (eind)redactie)<br />
-                      Joris Jenster (EMMA Communicatie, procesbegeleiding)
-                    </p>
+                    <ul className="credits">
+                      <li>
+                        <span className="credit-name">Saskia Bos</span>
+                        <span className="credit-role">UWV, ambtelijk secretaris centrale cliëntenraad</span>
+                      </li>
+                      <li>
+                        <span className="credit-name">Wonne Wolters</span>
+                        <span className="credit-role">UWV, adviseur cliëntenparticipatie</span>
+                      </li>
+                      <li>
+                        <span className="credit-name">Patrick van den Hurk</span>
+                        <span className="credit-role">EMMA Communicatie, (eind)redactie</span>
+                      </li>
+                      <li>
+                        <span className="credit-name">Joris Jenster</span>
+                        <span className="credit-role">EMMA Communicatie, procesbegeleiding</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>

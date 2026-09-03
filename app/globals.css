@@ -99,7 +99,13 @@ footer, .footer, [class*="footer"] {
 
 .reading-progress-bar {
   height: 100%;
-  background-color: var(--light-purple);
+  background-image: linear-gradient(
+    90deg,
+    var(--light-purple) 0 50%,
+    var(--light-blue) 50% 100%
+  );
+  background-size: 100vw 100%;
+  background-repeat: no-repeat;
   width: 0%;
   transition: width 0.1s ease;
 }
@@ -362,7 +368,7 @@ body, p, .body-text {
 
 /* Article bodies are split across several sections; margins don't collapse
    across those wrappers, so drop the trailing one to keep one rhythm. */
-.prose-longform > *:last-child {
+.prose-longform > p:last-child {
   margin-bottom: 0;
 }
 

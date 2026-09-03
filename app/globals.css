@@ -356,7 +356,10 @@ body, p, .body-text {
 .prose-longform {
   max-width: var(--longform-width);
   margin-inline: auto;
-  hyphens: auto;
+  /* No auto-hyphenation. On the narrow mobile column it fired on nearly every
+     line, pulling each one out to the right edge so left-aligned copy read as
+     justified. 'manual' still honours a deliberate &shy; if one is ever added. */
+  hyphens: manual;
 }
 
 /* Page titles that must start on the same left edge as the body copy */
@@ -680,7 +683,9 @@ main:has(.hero-purple) {
 /* Mobile: tighter article detail pages */
 @media (max-width: 640px) {
   .prose-longform p {
-    font-size: 1.125rem; /* 18px */
+    /* A notch smaller than 18px: fits ~3 more characters per line, which keeps
+       the rag shallow now that lines are no longer hyphenated to fit. */
+    font-size: 1.0625rem; /* 17px */
     line-height: 1.7;
     margin-bottom: 1.25rem;
   }

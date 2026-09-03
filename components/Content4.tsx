@@ -8,7 +8,7 @@ const Content4 = () => {
 
   return (
     <FadeInSection>
-      <section className="py-10 sm:py-16 md:py-24">
+      <section className="pt-10 sm:pt-16 md:pt-24">
         <div>
           <div className="container">
             <div className="mt-2 flex justify-center sm:mt-9">

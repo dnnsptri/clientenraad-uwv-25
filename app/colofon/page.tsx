@@ -10,6 +10,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
+import { ContentDivider } from "@/components/ContentDivider";
 import { Separator } from "@/components/ui/separator";
 import FadeInSection from "@/components/FadeInSection";
 
@@ -57,7 +58,7 @@ export default function ColofonPage() {
 
   return (
     <FadeInSection>
-      <section className="py-12 sm:py-24">
+      <section className="pt-12 sm:pt-24">
       <div>
         <div className="container">
           <div className="mt-2 flex justify-center sm:mt-9">
@@ -142,6 +143,10 @@ export default function ColofonPage() {
                         <span className="credit-role">EMMA Communicatie, procesbegeleiding</span>
                       </li>
                     </ul>
+                    <ContentDivider
+                      src="/images/logo_uwv.svg"
+                      alt="Logo UWV cliëntenraad"
+                    />
                   </div>
                 </div>
               </div>

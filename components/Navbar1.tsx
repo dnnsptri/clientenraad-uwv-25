@@ -93,7 +93,7 @@ const Navbar1 = ({
                 className="max-h-16 dark:invert"
                 alt={logo.alt}
               />
-              <span className="text-[28px] font-semi-bold" style={{ color: 'var(--purple)' }}>
+              <span className="brand-wordmark text-[28px]" style={{ color: 'var(--purple)' }}>
                 {logo.title}
               </span>
             </a>
@@ -120,7 +120,7 @@ const Navbar1 = ({
                 className="max-h-10 dark:invert"
                 alt={logo.alt}
               />
-              <span className="text-xl font-semibold" style={{ color: 'var(--purple)' }}>
+              <span className="brand-wordmark text-xl" style={{ color: 'var(--purple)' }}>
                 JV {REPORT_YEAR}
               </span>
             </a>
@@ -137,34 +137,32 @@ const Navbar1 = ({
                   <Menu className="size-5" />
                 </button>
               </SheetTrigger>
-              <SheetContent className="overflow-y-auto" style={{ backgroundColor: 'var(--white)', fontFamily: 'Work Sans, sans-serif' }}>
+              <SheetContent className="w-full max-w-none overflow-y-auto px-8 py-6 sm:max-w-none" style={{ backgroundColor: 'var(--white)', fontFamily: 'Work Sans, sans-serif' }}>
                 <SheetHeader>
-                  <SheetTitle>
-                    <a href={logo.url} className="flex items-center gap-3">
+                  <SheetTitle className="m-0">
+                    <a href={logo.url} className="flex items-center">
                       <img
                         src={logo.src}
-                        className="max-h-8 dark:invert"
+                        className="max-h-10 dark:invert"
                         alt={logo.alt}
                       />
-                      <span className="text-lg font-semibold" style={{ color: 'var(--purple)' }}>
-                        {logo.title}
-                      </span>
                     </a>
                   </SheetTitle>
                   <SheetDescription className="sr-only">
                     Navigatiemenu
                   </SheetDescription>
                 </SheetHeader>
-                <div className="flex flex-col gap-6 p-4">
+                <div className="flex flex-col gap-6 pt-8">
                   <Accordion
                     type="single"
                     collapsible
+                    defaultValue={menu.find((item) => item.items)?.title}
                     className="flex w-full flex-col"
                   >
                     {menu.map((item) => renderMobileMenuItem(item, () => setMobileOpen(false)))}
                   </Accordion>
 
-                  <div className="border-t pt-4" style={{ borderColor: 'var(--light-gray)' }}>
+                  <div className="pt-2">
                     <Button asChild className="pdf-button w-full">
                       <a href={auth.download.url} target="_blank" rel="noopener noreferrer">{auth.download.title}</a>
                     </Button>
@@ -245,7 +243,7 @@ const DesktopArticlesDropdown = ({ item }: { item: MenuItem }) => {
           }
           setOpen((current) => !current);
         }}
-        className="nav-item inline-flex h-10 w-max items-center justify-center gap-1 rounded-md px-4 py-2 text-sm font-medium transition-colors hover:text-[var(--blue)]"
+        className="nav-item inline-flex h-10 w-max items-center justify-center gap-1 rounded-md px-4 py-2 transition-colors"
         style={{ backgroundColor: "var(--white)" }}
       >
         {item.title}
@@ -288,7 +286,7 @@ const renderDesktopMenuItem = (item: MenuItem) => {
     <li key={item.title}>
       <a
         href={item.url}
-        className="nav-item inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:text-[var(--blue)]"
+        className="nav-item inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 transition-colors"
         style={{ backgroundColor: "var(--white)" }}
       >
         {item.title}
@@ -300,8 +298,8 @@ const renderDesktopMenuItem = (item: MenuItem) => {
 const renderMobileMenuItem = (item: MenuItem, onNavigate: () => void) => {
   if (item.items) {
     return (
-      <AccordionItem key={item.title} value={item.title} className="border-b" style={{ borderColor: 'var(--light-gray)' }}>
-        <AccordionTrigger className="text-md py-3 font-semibold hover:no-underline">
+      <AccordionItem key={item.title} value={item.title} className="border-none">
+        <AccordionTrigger className="nav-item py-3 hover:no-underline">
           {item.title}
         </AccordionTrigger>
         <AccordionContent className="mt-1">
@@ -318,8 +316,7 @@ const renderMobileMenuItem = (item: MenuItem, onNavigate: () => void) => {
       key={item.title}
       href={item.url}
       onClick={onNavigate}
-      className="text-md font-semibold py-3 border-b block transition-colors hover:text-[var(--blue)]"
-      style={{ borderColor: 'var(--light-gray)' }}
+      className="nav-item block py-3 transition-colors"
     >
       {item.title}
     </a>
@@ -344,7 +341,7 @@ const SubMenuLink = ({ item }: { item: MenuItem }) => {
     >
       <div className="text-foreground flex-shrink-0">{item.icon}</div>
       <div className="flex-1">
-        <div className="text-lg font-semibold mb-1">{item.title}</div>
+        <div className="text-lg font-medium mb-1" style={{ color: 'var(--purple)' }}>{item.title}</div>
         {item.description && (
           <p className=" text-sm leading-relaxed">
             {item.description}
@@ -374,7 +371,7 @@ const MobileSubMenuLink = ({ item, onNavigate }: { item: MenuItem; onNavigate: (
         {item.icon}
       </div>
       <div className="flex-1 min-w-0">
-        <div className="text-base font-semibold mb-0.5 truncate">{item.title}</div>
+        <div className="text-base font-medium mb-0.5 truncate" style={{ color: 'var(--purple)' }}>{item.title}</div>
         {item.description && (
           <p className="text-sm leading-relaxed text-muted-foreground">
             {item.description}

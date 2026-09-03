@@ -13,7 +13,8 @@ const Hero = ({ title, description, image, variant }: HeroProps) => {
   const svg = variant === "blue" ? "/images/element_top.svg" : "/images/element_top_purple.svg"
 
   return (
-    <section className="relative pb-8 sm:pb-0 sm:mb-0">
+    // The variant class lets the article body pick the opposite accent for its subheads
+    <section className={`hero-${variant} relative pb-8 sm:pb-0 sm:mb-0`}>
       {/* Hero photo — fill container, priority-loaded since it's above the fold */}
       <div className="relative h-[320px] min-h-[320px] sm:h-[420px] sm:min-h-[420px] lg:h-[680px] lg:min-h-[680px] hero-image-reveal">
         <Image
@@ -44,8 +45,8 @@ const Hero = ({ title, description, image, variant }: HeroProps) => {
                 style={{ backgroundColor: bgColor, boxShadow: "none", color: "var(--white)" }}
               >
                 <p className="pt-1 text-sm lg:text-xl">{description}</p>
-                <h1 className="text-balance text-2xl sm:text-3xl lg:text-6xl font-medium mt-3 sm:mt-4 lg:mt-10">
-                  {title}
+                <h1 className="text-balance text-2xl sm:text-3xl lg:text-6xl font-normal mt-3 sm:mt-4 lg:mt-10">
+                  {`\u2018${title}\u2019`}
                 </h1>
               </div>
             </div>

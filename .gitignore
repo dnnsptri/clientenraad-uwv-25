@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# QA screenshots and browser-tool output (project images live in public/images/)
+/*.png
+/.playwright-mcp/

@@ -57,11 +57,11 @@ export default function ColofonPage() {
 
   return (
     <FadeInSection>
-      <section className="py-24">
+      <section className="py-12 sm:py-24">
       <div>
         <div className="container">
-          <div className="mt-9 flex justify-center">
-            <div className="w-full max-w-5xl">
+          <div className="mt-2 flex justify-center sm:mt-9">
+            <div className="longform-column">
               <h1 className="blank text-balance text-4xl md:text-5xl">
                 Colofon
               </h1>
@@ -70,7 +70,7 @@ export default function ColofonPage() {
         </div>
       </div>
       <div className="container">
-        <div className="flex justify-center mt-16">
+        <div className="flex justify-center mt-8 sm:mt-16">
           <div className="w-full max-w-5xl">
             <div className="w-full">
               <div>

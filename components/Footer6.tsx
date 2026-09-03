@@ -31,16 +31,16 @@ const Footer6 = () => {
       <div className="container">
         <footer>
           <div className="relative mb-8 flex w-full flex-col gap-x-28 gap-y-8 md:flex-row md:justify-between md:gap-y-0">
-            <div className="max-w-96">
+            <div className="max-w-96 lg:max-w-none">
               <div className="mb-6 flex items-center gap-3">
                 <img
                   src="/images/logo_uwv.svg"
                   alt="UWV cliëntenraad logo"
                   className="h-12 w-auto object-contain object-center"
                 />
-                <h3 className="text-xl font-bold">Jaarverslag {REPORT_YEAR}</h3>
+                <h3 className="brand-wordmark text-xl">Jaarverslag {REPORT_YEAR}</h3>
               </div>
-              <p className="text-balance text-lg md:text-xl font-medium" style={{ color: 'var(--purple)' }}>
+              <p className="text-balance text-lg md:text-xl font-medium lg:whitespace-nowrap" style={{ color: 'var(--purple)' }}>
                 Werken aan kwalitatieve dienstverlening op maat
               </p>
             </div>

@@ -1,6 +1,7 @@
 import { HeroPurple } from '@/components/HeroPurple'
 import { ArticleBodySection } from '@/components/ArticleBodySection'
 import { ContentDivider } from '@/components/ContentDivider'
+import { TestimonialPurple } from '@/components/TestimonialPurple'
 import { TestimonialPurplePhoto } from '@/components/TestimonialPurplePhoto'
 import { getArticleMetadata, getNavbarMenuItems } from '@/lib/articles'
 
@@ -36,15 +37,18 @@ export default function ArticleCoalitieoverlegPage() {
         <p>
           Die bredere blik blijkt in de praktijk waardevol. Zo werden leden van de cliëntenraad al betrokken bij klantonderzoeken, pilots rond dienstverlening en bijeenkomsten waarin werd gezocht naar oplossingen voor complexe vraagstukken. Daardoor groeide de zichtbaarheid van de raad én het vertrouwen vanuit UWV. Inmiddels wordt de raadsleden geregeld gevraagd om mee te denken of onderzoek uit te voeren. Volgens Nico ontstaat die invloed niet vanzelf. &ldquo;Je moet jezelf laten zien. Dat hebben wij als raad de afgelopen jaren consequent gedaan. En als mensen dan merken dat je constructief meedenkt, word je vanzelf vaker gevraagd.&rdquo;
         </p>
+        <TestimonialPurple
+          quote="Als mensen dan merken dat je constructief meedenkt, word je vanzelf vaker gevraagd"
+        />
       </ArticleBodySection>
       <ArticleBodySection>
-        <TestimonialPurplePhoto
-          quote="Je bereikt meer met een uitgestoken hand dan met wantrouwen."
-          image={{ src: "/images/content_nico.jpg", alt: "Nico Eeftink" }}
-        />
         <p>
           Dat constructieve karakter is een rode draad in het verhaal van beide raadsleden. Zij zien de cliëntenraad niet als een tegenmacht, maar als een partner die vanuit de ervaringen van cliënten waarde toevoegt aan beleid en uitvoering. &ldquo;Dus moet je niet alleen kritisch zijn, maar ook laten zien wat je kunt bijdragen. Je bereikt meer met een uitgestoken hand dan met wantrouwen,&rdquo; zegt Nico. &ldquo;Kritisch zijn blijft belangrijk, maar uiteindelijk wil je toch vooral samen de dienstverlening verbeteren.&rdquo;
         </p>
+        <TestimonialPurplePhoto
+          quote="Je bereikt meer met een uitgestoken hand dan met wantrouwen"
+          image={{ src: "/images/content_nico.jpg", alt: "Nico Eeftink" }}
+        />
         <h2 className="scroll-m-20">
           Signalen sneller op de juiste plek
         </h2>
@@ -62,6 +66,9 @@ export default function ArticleCoalitieoverlegPage() {
         <p>
           Voor cliëntenraden die nog niet deelnemen aan een coalitieoverleg, hebben Pierre en Nico daarom een duidelijke boodschap: wacht niet af of je wordt uitgenodigd om mee te doen, maar zoek actief contact. Nodig managers uit en laat zien wat de cliëntenraad al in een vroeg stadium kan bijdragen. Pierre: &ldquo;Stel niet alleen de vraag wat UWV voor de cliëntenraad kan doen, maar vooral ook wat de cliëntenraad voor UWV kan betekenen. Juist daar zit de meerwaarde van de samenwerking. Aan tafel met alle managers bereik je in één uur soms meer dan in maanden afzonderlijk overleg.&rdquo;
         </p>
+        <TestimonialPurple
+          quote="Stel niet alleen de vraag wat UWV voor de cliëntenraad kan doen, maar vooral ook wat de cliëntenraad voor UWV kan betekenen"
+        />
         <p>
           Lees ook het artikel van <a href={getNavbarMenuItems()[3]?.url} className="underline">Ynske Jansen over de kwaliteit van beoordelingen</a>.
         </p>

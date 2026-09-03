@@ -1,6 +1,7 @@
 import { HeroBlue } from '@/components/Hero50'
 import { ArticleBodySection } from '@/components/ArticleBodySection'
 import { ContentDivider } from '@/components/ContentDivider'
+import { TestimonialBlue } from '@/components/TestimonialBlue'
 import { TestimonialBluePhoto } from '@/components/TestimonialBluePhoto'
 import { getArticleMetadata, getNavbarMenuItems } from '@/lib/articles'
 
@@ -30,6 +31,9 @@ export default function ArticleTalentenfestivalPage() {
         <p>
           Jan Mark en Mari zien de brede opzet als de grote kracht van het festival. &ldquo;Vaak zie je dat een banenmarkt vooral is gericht op het direct matchen van werkgevers en werkzoekenden,&rdquo; zegt Jan Mark. &ldquo;Hier was veel meer ruimte voor oriëntatie. Mensen konden ontdekken welke sectoren er zijn, welke opleidingen mogelijk zijn en welke stappen naar werk ze nog kunnen zetten waar ze misschien nog niet aan hebben gedacht of die minder voor de hand liggen.&rdquo;
         </p>
+        <TestimonialBlue
+          quote="Vaak zie je dat een banenmarkt vooral is gericht op het direct matchen van werkgevers en werkzoekenden"
+        />
         <h2 className="scroll-m-20">
           Breed en laagdrempelig
         </h2>
@@ -39,7 +43,7 @@ export default function ArticleTalentenfestivalPage() {
       </ArticleBodySection>
       <ArticleBodySection>
         <TestimonialBluePhoto
-          quote="Door de omvang en de open sfeer stappen mensen makkelijker op een werkgever af dan wanneer ze alleen een sollicitatiebrief moeten sturen."
+          quote="Door de omvang en de open sfeer stappen mensen makkelijker op een werkgever af dan wanneer ze alleen een sollicitatiebrief moeten sturen"
           image={{ src: "/images/content_mari.jpg", alt: "Mari van der Aalsvoort" }}
         />
         <p>

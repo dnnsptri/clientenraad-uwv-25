@@ -11,7 +11,7 @@ const Testimonial = ({
   const svg = variant === "blue" ? "/images/element_top.svg" : "/images/element_top_purple.svg"
 
   return (
-    <div className="prose-breakout not-prose relative mt-10 -mb-4 lg:my-32">
+    <div className="testimonial-text-only not-prose relative my-10 lg:my-32">
       <div className="absolute -top-16 lg:-top-32 left-0 z-20">
         <img
           src={svg}
@@ -20,10 +20,10 @@ const Testimonial = ({
           className="w-16 h-16 lg:w-32 lg:h-32 object-contain object-bottom"
         />
       </div>
-      <section className={`pt-8 lg:pt-16 ${cssClass}`}>
+      <section className={`py-8 lg:py-16 ${cssClass}`}>
         <div className="flex flex-col items-start text-left">
-          <p className="mb-4 lg:mb-16 max-w-4xl px-4 lg:px-8 font-regular text-left">
-            &ldquo;{quote}&rdquo;
+          <p className="max-w-4xl px-4 lg:px-8 font-regular text-left">
+            &lsquo;{quote}&rsquo;
           </p>
         </div>
       </section>

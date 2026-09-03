@@ -5,48 +5,52 @@ import type { Route } from "next";
 import { DirectionAwareHover } from "@/components/aceternity/direction-aware-hover";
 import { articles, ARTICLES_PATH, type Article } from "@/lib/articles";
 
-// Masonry packing: each tile goes into the currently shortest column.
-// Tile heights are known up front (tileRatio in lib/articles.ts), so this
-// runs on the server and produces gap-free columns with a near-flush bottom
-// edge. CSS multicol was tried first but its column balancing left large
-// holes; this gives full control.
-const packColumns = (items: Article[], columnCount: number): Article[][] => {
-  const columns: Article[][] = Array.from({ length: columnCount }, () => []);
-  const heights = new Array<number>(columnCount).fill(0);
+// Cover-style rows: each row pairs a narrow portrait tile with a wide
+// landscape tile, separated by a cyan bar, and the two rows mirror each
+// other — the composition used on the printed cover.
+const ROWS = [
+  { wide: "right" as const },
+  { wide: "left" as const },
+];
 
-  for (const item of items) {
-    const shortest = heights.indexOf(Math.min(...heights));
-    columns[shortest].push(item);
-    heights[shortest] += item.tileRatio;
+// Wide slots use the landscape article header; narrow slots use the square
+// home crop, which holds up better at a taller aspect.
+const rowPairs = (items: Article[]): [Article, Article][] => {
+  const pairs: [Article, Article][] = [];
+  for (let i = 0; i < items.length; i += 2) {
+    pairs.push([items[i], items[i + 1] ?? items[i]]);
   }
-
-  return columns;
+  return pairs;
 };
 
-// Masonry tile: the aspect ratio sits on the Link (the flex item) and acts
-// as its natural height, while `grow` lets tiles in a shorter column stretch
-// until every column matches the tallest one — the grid bottom stays flush
-// regardless of ratios or gap counts. object-cover absorbs the few extra
-// pixels by cropping slightly more.
-// Rendered tile widths: full width on mobile, half the container on tablet,
-// a third on desktop (container caps at 1400px).
+// Rendered tile widths: full width on mobile, otherwise roughly half the
+// 1024px grid (container caps at 1400px).
 const TILE_SIZES =
-  "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 460px";
+  "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 800px";
 
 // Ring color is the cyan --blue so it stays visible on both the purple hero
 // overlap and the white page background.
 const TILE_FOCUS =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--blue)] focus-visible:ring-offset-2";
 
-const MasonryTile = ({ article }: { article: Article }) => (
+// Row tile: the flex ratio sets its share of the row, the row's own aspect
+// ratio sets the height, and object-cover handles the crop.
+const RowTile = ({
+  article,
+  wide,
+}: {
+  article: Article;
+  wide: boolean;
+}) => (
   <Link
     href={`${ARTICLES_PATH}/${article.slug}` as Route}
-    className={`block grow rounded-sm ${TILE_FOCUS} ${article.tileAspect}`}
+    className={`block min-w-0 rounded-sm ${TILE_FOCUS}`}
+    style={{ flex: wide ? "1.55 1 0%" : "1.05 1 0%" }}
   >
     <DirectionAwareHover
       className="h-full rounded-sm"
-      imageUrl={article.tileImage}
-      imageAlt={article.tileImageAlt}
+      imageUrl={wide ? article.image : article.tileImage}
+      imageAlt={wide ? article.imageAlt : article.tileImageAlt}
       imageSizes={TILE_SIZES}
       imagePriority
     >
@@ -54,6 +58,15 @@ const MasonryTile = ({ article }: { article: Article }) => (
       <p className="text-sm font-normal">{article.author}</p>
     </DirectionAwareHover>
   </Link>
+);
+
+// Cyan divider between the two tiles in a row, echoing the cover's bars.
+const RowBar = () => (
+  <div
+    aria-hidden
+    className="w-12 shrink-0 lg:w-[60px]"
+    style={{ backgroundColor: "var(--light-blue)" }}
+  />
 );
 
 // Single-column mobile tile: no stretching needed, and touch devices have
@@ -77,37 +90,38 @@ const CaptionedTile = ({ article }: { article: Article }) => (
   </Link>
 );
 
-const MasonryColumns = ({ columns }: { columns: Article[][] }) => (
-  <>
-    {columns.map((column, index) => (
-      <div key={index} className="flex flex-1 flex-col gap-3">
-        {column.map((article) => (
-          <MasonryTile key={article.slug} article={article} />
-        ))}
-      </div>
-    ))}
-  </>
-);
-
 // Article overview, sourced from lib/articles.ts: adding an article there
 // automatically adds it here (and to the navbar, footer and sitemap).
-// With four articles, a 2-column masonry grid balances better than three
-// columns (which leaves one column with a single stretched tile).
 const Gallery31 = () => {
-  const twoColumns = packColumns(articles, 2);
+  const pairs = rowPairs(articles);
 
-  // The negative top margin pulls the masonry up so its first row straddles
+  // The negative top margin pulls the grid up so its first row straddles
   // the purple hero (which carries extra bottom padding to make room).
   return (
     <section
       id="artikelen"
       aria-label="Artikelen"
-      className="relative -mt-16 pb-20 sm:-mt-24 sm:pb-32 md:-mt-48"
+      className="relative -mt-16 pb-24 sm:-mt-24 md:-mt-48 md:pb-8"
     >
       <div className="container relative flex h-full w-full flex-col items-center justify-center">
-        <div className="relative w-full max-w-4xl lg:max-w-5xl">
-          <div className="hidden gap-4 sm:flex">
-            <MasonryColumns columns={twoColumns} />
+        <div className="relative w-full">
+          <div className="hidden flex-col gap-4 sm:flex">
+            {pairs.map(([first, second], index) => {
+              const wideOnRight = (ROWS[index % ROWS.length] ?? ROWS[0]).wide === "right";
+              return (
+                <div
+                  key={first.slug}
+                  className="flex aspect-[16/5] gap-4"
+                >
+                  {/* The bar hangs off the row's outer edge, on whichever
+                      side carries the narrow tile, so the two rows mirror. */}
+                  {wideOnRight && <RowBar />}
+                  <RowTile article={first} wide={!wideOnRight} />
+                  <RowTile article={second} wide={wideOnRight} />
+                  {!wideOnRight && <RowBar />}
+                </div>
+              );
+            })}
           </div>
           <div className="flex flex-col gap-6 sm:hidden">
             {articles.map((article) => (

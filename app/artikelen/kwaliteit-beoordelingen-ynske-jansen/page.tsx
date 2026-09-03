@@ -1,6 +1,7 @@
 import { HeroBlue } from '@/components/Hero50'
 import { ArticleBodySection } from '@/components/ArticleBodySection'
 import { ContentDivider } from '@/components/ContentDivider'
+import { TestimonialBlue } from '@/components/TestimonialBlue'
 import { TestimonialBluePhoto } from '@/components/TestimonialBluePhoto'
 import { getArticleMetadata } from '@/lib/articles'
 
@@ -16,7 +17,7 @@ export default function ArticleYnskeJansenPage() {
         />
       <ArticleBodySection>
         <p className="intro">
-          De Centrale Cliëntenraad (CC) van UWV verdiept zich al jaren in de problemen rond de uitvoering van het arbeidsongeschiktheidsstelsel door het UWV. Niet alleen de snelheid van de sociaal-medische beoordelingen voor de WIA laat zeer te wensen over, maar ook de kwaliteit ervan. Dat is vooral te zien bij de zogenaamde &lsquo;moeilijk objectiveerbare aandoeningen&rsquo;. Hierbij is een grotere &lsquo;interdoktervariatie&rsquo; te zien dan bij andere, meer gangbare aandoeningen. Dat wil zeggen dat de beoordelingen tussen artsen (te) sterk uiteen lopen.<br /><br />
+          <b>Ynske Jansen</b> van de Steungroep ME en Arbeidsongeschiktheid weet er alles van. De Centrale Cliëntenraad (CC) van UWV verdiept zich al jaren in de problemen rond de uitvoering van het arbeidsongeschiktheidsstelsel door het UWV. Niet alleen de snelheid van de sociaal-medische beoordelingen voor de WIA laat zeer te wensen over, maar ook de kwaliteit ervan. Dat is vooral te zien bij de zogenaamde &lsquo;moeilijk objectiveerbare aandoeningen&rsquo;. Hierbij is een grotere &lsquo;interdoktervariatie&rsquo; te zien dan bij andere, meer gangbare aandoeningen. Dat wil zeggen dat de beoordelingen tussen artsen (te) sterk uiteen lopen.<br /><br />
         </p>
         <p>
           De CC werkt in dit kader samen met de patiëntenverenigingen die deze cliënten vertegenwoordigen. De CC bracht in 2024 een ongevraagd advies uit over deze problematiek, waarin ook de oplossingen van de patiëntenorganisaties (verenigd in de Initiatiefgroep Motie-Van Kent) werden meegenomen. In 2025 was er opnieuw contact met de Steungroep ME en Arbeidsongeschiktheid, een van de patiëntenorganisaties binnen de initiatiefgroep. Aanleiding was de gewonnen rechtszaak die drie cliënten met ME/CVS voerden tegen de afwijzing van hun WIA-uitkering.
@@ -25,7 +26,7 @@ export default function ArticleYnskeJansenPage() {
           Landelijke organisatie met 1.200 donateurs
         </h2>
         <p>
-          <b>Ynske Jansen</b> zet zich namens de Steungroep ME en Arbeidsongeschiktheid al ruim dertig jaar in voor mensen met ME/CVS die vastlopen in de beoordeling van hun arbeidsongeschiktheid. Wat ooit begon als een grondige voorbereiding op haar eigen keuring, groeide in samenwerking met anderen uit tot een landelijke vrijwilligersorganisatie met inmiddels meer dan 1.200 donateurs. Al snel bleken er raakvakken te zijn met een bredere groep aandoeningen, die vaak worden aangeduid als &lsquo;moeilijk objectiveerbaar&rsquo;. Het aantal mensen dat met zo&apos;n aandoening leeft, is door COVID-19 enorm gegroeid, omdat long covid er ook één is. Net als ME/CVS valt het onder de paraplu van post-acute infectiesyndromen (PAIS).
+          Ynske zet zich namens de Steungroep ME en Arbeidsongeschiktheid al ruim dertig jaar in voor mensen met ME/CVS die vastlopen in de beoordeling van hun arbeidsongeschiktheid. Wat ooit begon als een grondige voorbereiding op haar eigen keuring, groeide in samenwerking met anderen uit tot een landelijke vrijwilligersorganisatie met inmiddels meer dan 1.200 donateurs. Al snel bleken er raakvakken te zijn met een bredere groep aandoeningen, die vaak worden aangeduid als &lsquo;moeilijk objectiveerbaar&rsquo;. Het aantal mensen dat met zo&apos;n aandoening leeft, is door COVID-19 enorm gegroeid, omdat long covid er ook één is. Net als ME/CVS valt het onder de paraplu van post-acute infectiesyndromen (PAIS).
         </p>
         <p>
           Allereerst: Ynske heeft niets op met de benaming &lsquo;moeilijk objectiveerbaar&rsquo;, die ze dan ook liever niet gebruikt. Onder de noemer vallen naast ME/CVS en long covid alle andere ziektebeelden waarbij klachten en beperkingen niet altijd in standaardonderzoeken zichtbaar zijn of kunnen worden gemaakt. &ldquo;Het is een term die iets lijkt te zeggen over de aandoening of de patiënt. Maar in werkelijkheid zegt het vooral iets over de kennis of juist het gebrek aan kennis van degene die moet beoordelen&rdquo;, aldus Ynske.
@@ -36,6 +37,9 @@ export default function ArticleYnskeJansenPage() {
         <p>
           Volgens haar ontstaat juist daar het probleem. &ldquo;Er is ooit onderzocht wat verzekeringsartsen verstaan onder een &lsquo;moeilijk objectiveerbare aandoening&rsquo;. Dan gaat het over moeite met het stellen van een diagnose, moeite met het begrijpen van het verband tussen klachten en ziekte, en moeite met het inschatten van beperkingen of het bepalen van een behandeling. Dat zegt dus meer over de beschikbare kennis dan over de ziekte zelf. Gedegen kennis bij mensen die keuringen en beoordelingen doen is daarom de sleutel om dit probleem op te lossen.&rdquo;
         </p>
+        <TestimonialBlue
+          quote="Moeilijk objectiveerbaar is een term die iets lijkt te zeggen over de aandoening of de patiënt. Maar in werkelijkheid zegt het vooral iets over de kennis of juist het gebrek aan kennis van degene die moet beoordelen"
+        />
         <p>
           Dat gebrek aan kennis heeft volgens Ynske grote gevolgen voor cliënten. Door toedoen van de Steungroep is al sinds 1996 in een richtlijn vastgelegd dat arbeidsongeschiktheid in het kader van de WAO, WIA en Wajong ook objectief kan worden vastgesteld als de oorzaak van klachten niet meetbaar is met een laboratoriumtest, foto of scan. Toch blijken cliënten in de praktijk nog altijd tegen scepsis, ongeloof, verkeerde diagnoses en onderschatting van hun beperkingen aan te lopen. Ynske: &ldquo;Er zijn verzekeringsartsen geweest die jarenlang zijn blijven zeggen: het is niet objectief vast te stellen, dus ik houd er geen of minder rekening mee. Terwijl de wet en de richtlijnen dus allang ruimte bieden om dat wel volledig te doen.&rdquo;
         </p>
@@ -48,7 +52,7 @@ export default function ArticleYnskeJansenPage() {
       </ArticleBodySection>
       <ArticleBodySection>
         <TestimonialBluePhoto
-          quote="Cliëntenraden brengen signalen van cliënten onder de aandacht. Zij zien dezelfde problemen terugkomen als wij."
+          quote="Cliëntenraden brengen signalen van cliënten onder de aandacht. Zij zien dezelfde problemen terugkomen als wij"
           image={{ src: "/images/content_ynske.jpg", alt: "Ynske Jansen" }}
         />
         <p>
@@ -71,6 +75,9 @@ export default function ArticleYnskeJansenPage() {
         <p>
           Dat was een echte doorbraak, zegt Ynske: &ldquo;Door uit te spreken dat die informatie niet had mogen worden genegeerd, maakte de Centrale Raad van Beroep duidelijk dat er echt op een verkeerde manier naar deze zaken is gekeken. Na herbeoordeling kregen alle drie de betrokkenen alsnog met terugwerkende kracht een IVA-uitkering. Voor hen betekende dat eindelijk erkenning en recht.&rdquo; Volgens Ynske reikt de betekenis van de uitspraak echter veel verder dan deze drie zaken. &ldquo;We zien dat mensen die nu voor het eerst gekeurd worden vaker een eerlijke beoordeling krijgen. Maar eerlijk gezegd blijft het nog te vaak een loterij.&rdquo;
         </p>
+        <TestimonialBlue
+          quote="Door uit te spreken dat die informatie niet had mogen worden genegeerd, maakte de Centrale Raad van Beroep duidelijk dat er echt op een verkeerde manier naar deze zaken is gekeken"
+        />
         <p>
           Juist daarom vindt zij dat het UWV nu moet doorpakken. De Steungroep pleit ervoor dat eerder beoordeelde cliënten opnieuw worden beoordeeld op basis van de huidige kennis en de uitspraak. Daarnaast moeten verzekeringsartsen meer handvatten krijgen voor de beoordeling van ME/CVS en vergelijkbare aandoeningen. &ldquo;Voor long covid heeft het UWV al stappen gezet. De verzekeringsartsen hebben twee memo&apos;s met aandachtspunten voor de beoordeling ontvangen. Wij vinden dat hetzelfde ook voor ME/CVS nodig is.&rdquo; Dat gesprek wordt inmiddels gevoerd met het UWV. Tegelijkertijd loopt er een kwaliteitsonderzoek naar een aantal WIA-beoordelingen van mensen met ME/CVS.
         </p>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&family=Open+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&family=Open+Sans:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -26,10 +26,10 @@ html, body {
   filter: blur(clamp(75px, 10vw, 150px));
   background: linear-gradient(
     90deg,
-    rgba(33, 123, 254, 0.3) 5.18%,
-    rgba(7, 142, 251, 0.3) 31.68%,
-    rgba(172, 135, 235, 0.3) 54.88%,
-    rgba(238, 77, 93, 0.3) 96.92%
+    rgba(33, 123, 254, 0.2) 5.18%,
+    rgba(7, 142, 251, 0.2) 31.68%,
+    rgba(172, 135, 235, 0.2) 54.88%,
+    rgba(238, 77, 93, 0.2) 96.92%
   );
 }
 
@@ -47,10 +47,10 @@ html, body {
   opacity: 0.89;
   background: linear-gradient(
     90deg,
-    rgba(33, 123, 254, 0.4) 5.18%,
-    rgba(7, 142, 251, 0.4) 31.68%,
-    rgba(172, 135, 235, 0.4) 54.88%,
-    rgba(238, 77, 93, 0.4) 96.92%
+    rgba(33, 123, 254, 0.27) 5.18%,
+    rgba(7, 142, 251, 0.27) 31.68%,
+    rgba(172, 135, 235, 0.27) 54.88%,
+    rgba(238, 77, 93, 0.27) 96.92%
   );
   border-radius: clamp(270px, 37vw, 536.679px);
   width: clamp(270px, 37vw, 536.679px);
@@ -67,6 +67,13 @@ body {
   background-color: var(--white);
   color: hsl(var(--foreground));
   letter-spacing: 0.5px;
+}
+
+/* Brand wordmark: light weight and tighter than the 0.5px body tracking.
+   Weight lives here so the navbar and footer marks can't drift apart. */
+.brand-wordmark {
+  font-weight: 300;
+  letter-spacing: -0.25px;
 }
 
 /* Navbar styling */
@@ -201,7 +208,13 @@ footer, .footer, [class*="footer"] {
 /* Navigation items styling */
 .nav-item {
   font-size: 18px !important;
-  font-weight: 500 !important;
+  font-weight: 400 !important;
+  color: var(--blue);
+}
+
+/* Hover moves to purple, since blue is now the resting colour */
+.nav-item:hover {
+  color: var(--purple);
 }
 
 
@@ -282,14 +295,14 @@ footer, .footer, [class*="footer"] {
 /* Typography styles */
 h1 {
   font-family: 'Work Sans', sans-serif;
-  font-weight: 400;
+  font-weight: 300; /* light */
   line-height: 1.5; /* 150% line spacing */
   letter-spacing: 0.25px;
 }
 
 h1.blank {
   font-family: 'Work Sans', sans-serif;
-  font-weight: 400;
+  font-weight: 300; /* light */
   line-height: 1.5; /* 150% line spacing */
   letter-spacing: 0.25px;
   text-align: left;
@@ -323,35 +336,100 @@ h3 {
 
 body, p, .body-text {
   font-family: 'Open Sans', sans-serif !important;
-  font-weight: 400 !important; /* Regular */
+  font-weight: 300 !important; /* Light */
   line-height: 1.8; /* 180% line spacing */
   letter-spacing: 0.5px;
 }
 
 /* Long-form reading (voorwoord, artikelen, colofon) */
+:root {
+  /* Shared reading-column width: body copy and page titles line up on it */
+  --longform-width: 52rem;
+}
+
 .prose-longform {
-  max-width: 52rem;
+  max-width: var(--longform-width);
   margin-inline: auto;
   hyphens: auto;
 }
 
+/* Page titles that must start on the same left edge as the body copy */
+.longform-column {
+  width: 100%;
+  max-width: var(--longform-width);
+  margin-inline: auto;
+}
+
+/* Article bodies are split across several sections; margins don't collapse
+   across those wrappers, so drop the trailing one to keep one rhythm. */
+.prose-longform > *:last-child {
+  margin-bottom: 0;
+}
+
 .prose-longform p {
-  font-size: 1.125rem; /* 18px */
+  font-size: 1.1875rem; /* 19px */
   line-height: 1.75;
-  letter-spacing: 0;
+  /* Light (300) body copy needs a touch of tracking to stay readable */
+  letter-spacing: 0.2px;
   margin-bottom: 1.5rem;
 }
 
 .prose-longform h2 {
   font-size: 1.625rem;
-  font-weight: 600;
+  font-weight: 500; /* medium, matches the base h2 */
+  /* Subhead sits directly on top of its paragraph, no gap in between */
+  margin-bottom: 0;
   line-height: 1.35;
   letter-spacing: 0.25px;
   scroll-margin-top: 5rem;
 }
 
-.prose-longform h2:first-of-type {
-  margin-top: 2.5rem;
+/* Article accent is the opposite brand colour from the hero block:
+   blue hero -> aubergine accents, aubergine hero -> blue accents. */
+main:has(.hero-blue) {
+  --article-accent: var(--purple);
+}
+
+main:has(.hero-purple) {
+  --article-accent: var(--blue);
+}
+
+.prose-longform h2 {
+  color: var(--article-accent, var(--purple));
+}
+
+/* Drop cap on the first paragraph after the intro, as in the print edition.
+   font-size / line-height are tuned so the letter spans three text lines. */
+.prose-longform .intro + p::first-letter {
+  float: left;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  font-size: 7.2em;
+  line-height: 0.72;
+  /* Work Sans caps carry a 0.108em left side bearing; cancel it so the
+     letter hangs flush with the text column */
+  margin-left: -0.108em;
+  padding-right: 0.06em;
+  color: var(--article-accent, var(--purple));
+}
+
+/* Text-only pull quote: block hangs left by its own padding so the quote
+   text lines up with the body column. The section owns the vertical
+   padding, so the paragraph must not add the body-copy margin on top. */
+.prose-longform .testimonial-text-only p {
+  margin-bottom: 0;
+}
+
+.prose-longform .testimonial-text-only {
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+@media (min-width: 1024px) {
+  .prose-longform .testimonial-text-only {
+    margin-left: -2rem;
+    margin-right: -2rem;
+  }
 }
 
 /* Pull quotes / testimonial blocks out to hero intro width (max-w-5xl) */
@@ -510,11 +588,6 @@ body, p, .body-text {
     height: 22px;
   }
 
-  /* Tighter testimonial (text-only) blocks */
-  .testimonial-blue,
-  .testimonial-purple {
-    padding-top: 0.5rem;
-  }
 }
 
 /* Light blue callout box */
@@ -562,7 +635,7 @@ body, p, .body-text {
 /* Mobile: tighter article detail pages */
 @media (max-width: 640px) {
   .prose-longform p {
-    font-size: 1.0625rem; /* 17px */
+    font-size: 1.125rem; /* 18px */
     line-height: 1.7;
     margin-bottom: 1.25rem;
   }
@@ -575,7 +648,17 @@ body, p, .body-text {
   .prose-longform h2 {
     font-size: 1.375rem;
     margin-top: 2.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
+  }
+
+  /* Page titles sit tighter on small screens */
+  h1.blank {
+    line-height: 1.2;
+  }
+
+  /* Narrow column: drop the cap to two lines so it doesn't dominate */
+  .prose-longform .intro + p::first-letter {
+    font-size: 4.72em;
   }
 
   .prose-longform .prose-breakout {

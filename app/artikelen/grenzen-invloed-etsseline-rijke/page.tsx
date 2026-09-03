@@ -39,7 +39,7 @@ export default function ArticleEtsselineRijkePage() {
       </ArticleBodySection>
       <ArticleBodySection>
         <TestimonialPurplePhoto
-          quote="We hoorden soms pas achteraf welke kant het opgaat. Terwijl wij juist dicht bij de praktijk staan."
+          quote="We hoorden soms pas achteraf welke kant het opgaat. Terwijl wij juist dicht bij de praktijk staan"
           image={{ src: "/images/content_etsseline.jpg", alt: "Etsseline Rijke" }}
         />
         <p>

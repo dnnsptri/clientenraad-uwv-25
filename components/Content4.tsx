@@ -8,22 +8,31 @@ const Content4 = () => {
 
   return (
     <FadeInSection>
-      <section className="py-16 md:py-24">
+      <section className="py-10 sm:py-16 md:py-24">
         <div>
           <div className="container">
-            <div className="mt-9 flex justify-center">
-              <div className="w-full max-w-5xl">
+            <div className="mt-2 flex justify-center sm:mt-9">
+              <div className="longform-column">
                 <h1 className="blank text-balance text-4xl md:text-5xl">
-                  Voorwoord van de
-                  <br />
-                  UWV Cliëntenraadsredactie
+                  {/* Narrow screens can't fit "Cliëntenraadsredactie" on one
+                      line; the soft hyphen gives it a clean break point. */}
+                  <span className="sm:hidden">
+                    Voorwoord van
+                    <br />
+                    de UWV Cli&euml;nten&shy;raadsredactie
+                  </span>
+                  <span className="hidden sm:inline">
+                    Voorwoord van de
+                    <br />
+                    UWV Cli&euml;ntenraadsredactie
+                  </span>
                 </h1>
               </div>
             </div>
           </div>
         </div>
         <div className="container">
-          <div className="flex justify-center mt-16">
+          <div className="flex justify-center mt-8 sm:mt-16">
             <div className="w-full max-w-5xl">
               <div className="w-full">
                 <div>

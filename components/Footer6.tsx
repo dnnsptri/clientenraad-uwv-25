@@ -43,6 +43,9 @@ const Footer6 = () => {
               <p className="text-balance text-lg md:text-xl font-medium lg:whitespace-nowrap" style={{ color: 'var(--purple)' }}>
                 De stem van de cliënt
               </p>
+              <p className="mt-1 text-base md:text-lg" style={{ color: 'var(--purple)' }}>
+                Signaleren, adviseren, verbeteren
+              </p>
             </div>
             <div className="flex flex-col items-start gap-x-20 gap-y-14 xl:flex-row">
               <div className="inline-grid w-fit grid-cols-1 gap-x-20 gap-y-14 sm:grid-cols-2">

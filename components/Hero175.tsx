@@ -21,8 +21,11 @@ const Hero175 = () => {
             </p>
           </div> */}
           <h1 className="w-full text-balance text-center text-3xl font-medium text-foreground sm:text-5xl md:text-7xl">
-            Werken aan kwalitatieve dienstverlening op maat
+            De stem van de cliënt
           </h1>
+          <p className="-mt-2 text-center text-xl font-medium text-foreground sm:text-2xl md:text-3xl">
+            Signaleren, adviseren, verbeteren
+          </p>
           <p className="text-center text-[19px] text-white">
             Dankzij de ervaringen van cliënten en de dialoog met UWV werken de cliëntenraden aan meer bereikbaarheid, begrijpelijkheid en betrouwbaarheid. Alleen samen kunnen we stappen zetten naar een dienstverlening die recht doet aan iedere cliënt.
           </p>

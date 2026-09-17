@@ -41,7 +41,7 @@ const Footer6 = () => {
                 <h3 className="brand-wordmark text-xl">Jaarverslag {REPORT_YEAR}</h3>
               </div>
               <p className="text-balance text-lg md:text-xl font-medium lg:whitespace-nowrap" style={{ color: 'var(--purple)' }}>
-                Werken aan kwalitatieve dienstverlening op maat
+                De stem van de cliënt
               </p>
             </div>
             <div className="flex flex-col items-start gap-x-20 gap-y-14 xl:flex-row">

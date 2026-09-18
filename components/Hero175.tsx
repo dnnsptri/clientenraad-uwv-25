@@ -11,7 +11,7 @@ const Hero175 = () => {
     // overlaps into (see Gallery31's negative top margin).
     <section className="dark font-public_sans relative pt-12 pb-40 before:absolute before:top-0 before:left-0 before:z-10 before:block before:h-[15rem] before:w-full before:bg-linear-to-b before:from-muted before:to-transparent before:content-[''] md:pt-32 md:pb-72" style={{ backgroundColor: 'var(--purple)' }}>
       <div className="relative z-20 container">
-        <div className="relative z-20 mx-auto flex max-w-[56.25rem] flex-col items-center gap-6">
+        <div className="relative z-20 mx-auto flex max-w-[56.25rem] flex-col items-center gap-4 sm:gap-6">
           {/* <div
             className="mb-4 flex w-fit items-center gap-1 rounded-full border px-2.5 py-1.5"
             style={{ backgroundColor: 'var(--light-blue)' }}
@@ -20,13 +20,15 @@ const Hero175 = () => {
               Jaarverslag 2025
             </p>
           </div> */}
-          <h1 className="w-full text-balance text-center text-3xl font-medium text-foreground sm:text-5xl md:text-7xl">
+          <h1 className="w-full text-balance text-center text-3xl font-normal text-foreground sm:text-5xl md:text-7xl">
             De stem van de cliënt
           </h1>
-          <p className="-mt-2 text-center text-xl font-medium text-foreground sm:text-2xl md:text-3xl">
+          {/* Sits a step below the title: bigger and heavier than the intro so
+              the three levels stay distinct at mobile widths (30/20/17px). */}
+          <p className="-mt-1 text-center text-xl font-medium text-foreground sm:-mt-2 sm:text-2xl md:text-3xl">
             Signaleren, adviseren, verbeteren
           </p>
-          <p className="text-center text-[19px] text-white">
+          <p className="text-center text-[17px] text-white/90 sm:text-[19px] sm:text-white">
             Dankzij de ervaringen van cliënten en de dialoog met UWV werken de cliëntenraden aan meer bereikbaarheid, begrijpelijkheid en betrouwbaarheid. Alleen samen kunnen we stappen zetten naar een dienstverlening die recht doet aan iedere cliënt.
           </p>
           {/* Scroll shortcut is only useful on mobile, where the articles

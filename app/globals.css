@@ -335,7 +335,7 @@ h2.blue {
 
 h3 {
   font-family: 'Work Sans', sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--purple); /* purple */
   letter-spacing: 0.5px;
 }

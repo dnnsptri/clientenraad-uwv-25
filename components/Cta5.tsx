@@ -18,7 +18,7 @@ const Cta5 = () => {
             />
           </div>
           <div className="w-full shrink-0 px-4 py-6 md:p-8 lg:w-1/2 lg:px-16">
-            <h3 className="mb-3 text-2xl font-semibold md:mb-4 md:text-4xl lg:mb-6">
+            <h3 className="mb-3 text-2xl md:mb-4 md:text-4xl lg:mb-6">
               Jaarverslag {REPORT_YEAR} als PDF
             </h3>
             <p className="mb-8 lg:text-[19px]">
